@@ -530,94 +530,94 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_introduction">Introduction</a>
 <ul class="sectlevel1">
 <li><a href="#lessons-learned">1. Lessons Learned</a></li>
+<li><a href="#_concepts">2. Concepts</a>
+<ul class="sectlevel2">
+<li><a href="#microservice">2.1. Microservice</a></li>
+<li><a href="#cdi-native">2.2. CDI-native</a></li>
+<li><a href="#microprofile-native">2.3. MicroProfile-native</a></li>
+<li><a href="#flat-classpath">2.4. Flat Classpath</a></li>
 </ul>
 </li>
-<li><a href="#_concepts">Concepts</a>
-<ul class="sectlevel1">
-<li><a href="#microservice">2. Microservice</a></li>
-<li><a href="#cdi-native">3. CDI-native</a></li>
-<li><a href="#microprofile-native">4. MicroProfile-native</a></li>
-<li><a href="#flat-classpath">5. Flat Classpath</a></li>
 </ul>
 </li>
 <li><a href="#_tools">Tools</a>
 <ul class="sectlevel1">
-<li><a href="#maven-plugin">6. Maven Plugin</a>
+<li><a href="#maven-plugin">3. Maven Plugin</a>
 <ul class="sectlevel2">
-<li><a href="#_modes">6.1. Modes</a></li>
-<li><a href="#_formats">6.2. Formats</a></li>
-<li><a href="#_code_main_code">6.3. <code>main()</code></a></li>
-<li><a href="#_other_configuration">6.4. Other configuration</a></li>
-<li><a href="#_distribution_structure">6.5. Distribution Structure</a></li>
+<li><a href="#_modes">3.1. Modes</a></li>
+<li><a href="#_formats">3.2. Formats</a></li>
+<li><a href="#_code_main_code">3.3. <code>main()</code></a></li>
+<li><a href="#_other_configuration">3.4. Other configuration</a></li>
+<li><a href="#_distribution_structure">3.5. Distribution Structure</a></li>
 </ul>
 </li>
-<li><a href="#maven-archetypes">7. Maven Archetypes</a>
+<li><a href="#maven-archetypes">4. Maven Archetypes</a>
 <ul class="sectlevel2">
-<li><a href="#_jax_rs">7.1. JAX-RS</a></li>
+<li><a href="#_jax_rs">4.1. JAX-RS</a></li>
 </ul>
 </li>
-<li><a href="#testing-junit">8. Testing with JUnit</a></li>
-<li><a href="#testing-arquillian">9. Testing with Arquillian</a></li>
-<li><a href="#devtools">10. Developer Tools</a></li>
+<li><a href="#testing-junit">5. Testing with JUnit</a></li>
+<li><a href="#testing-arquillian">6. Testing with Arquillian</a></li>
+<li><a href="#devtools">7. Developer Tools</a></li>
 </ul>
 </li>
 <li><a href="#_components">Components</a>
 <ul class="sectlevel1">
-<li><a href="#bom-maven">11. Using the BOM with Maven</a></li>
-<li><a href="#component-kernel">12. Kernel</a>
+<li><a href="#bom-maven">8. Using the BOM with Maven</a></li>
+<li><a href="#component-kernel">9. Kernel</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration">12.1. Configuration</a></li>
+<li><a href="#_configuration">9.1. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_java_ee">13. Java EE</a>
+<li><a href="#_java_ee">10. Java EE</a>
 <ul class="sectlevel2">
-<li><a href="#component-bean-validation">13.1. Bean Validation</a></li>
-<li><a href="#component-servlet">13.2. Servlet</a></li>
-<li><a href="#component-jaxrs">13.3. JAX-RS</a></li>
-<li><a href="#component-websockets">13.4. WebSockets</a></li>
-<li><a href="#component-json-p">13.5. JSON-P</a></li>
-<li><a href="#component-jndi">13.6. JNDI</a></li>
-<li><a href="#component-jdbc">13.7. JDBC</a></li>
-<li><a href="#component-datasources">13.8. DataSources</a></li>
-<li><a href="#component-jpa">13.9. JPA</a></li>
-<li><a href="#component-jta">13.10. JTA</a></li>
-<li><a href="#component-jca">13.11. JCA</a></li>
-<li><a href="#component-jms">13.12. JMS</a></li>
-<li><a href="#component-jms-artemis">13.13. JMS-Artemis</a></li>
+<li><a href="#component-bean-validation">10.1. Bean Validation</a></li>
+<li><a href="#component-servlet">10.2. Servlet</a></li>
+<li><a href="#component-jaxrs">10.3. JAX-RS</a></li>
+<li><a href="#component-websockets">10.4. WebSockets</a></li>
+<li><a href="#component-json-p">10.5. JSON-P</a></li>
+<li><a href="#component-jndi">10.6. JNDI</a></li>
+<li><a href="#component-jdbc">10.7. JDBC</a></li>
+<li><a href="#component-datasources">10.8. DataSources</a></li>
+<li><a href="#component-jpa">10.9. JPA</a></li>
+<li><a href="#component-jta">10.10. JTA</a></li>
+<li><a href="#component-jca">10.11. JCA</a></li>
+<li><a href="#component-jms">10.12. JMS</a></li>
+<li><a href="#component-jms-artemis">10.13. JMS-Artemis</a></li>
 </ul>
 </li>
-<li><a href="#_microprofile">14. MicroProfile</a>
+<li><a href="#_microprofile">11. MicroProfile</a>
 <ul class="sectlevel2">
-<li><a href="#component-config">14.1. Config</a></li>
-<li><a href="#component-faulttolerance">14.2. Fault Tolerance</a></li>
-<li><a href="#component-health">14.3. Health</a></li>
-<li><a href="#component-metrics">14.4. Metrics</a></li>
-<li><a href="#component-openapi">14.5. OpenAPI</a></li>
-<li><a href="#component-opentracing">14.6. OpenTracing</a>
+<li><a href="#component-config">11.1. Config</a></li>
+<li><a href="#component-faulttolerance">11.2. Fault Tolerance</a></li>
+<li><a href="#component-health">11.3. Health</a></li>
+<li><a href="#component-metrics">11.4. Metrics</a></li>
+<li><a href="#component-openapi">11.5. OpenAPI</a></li>
+<li><a href="#component-opentracing">11.6. OpenTracing</a>
 <ul class="sectlevel3">
-<li><a href="#component-opentracing-jaeger">14.6.1. OpenTracing with Jaeger</a></li>
+<li><a href="#component-opentracing-jaeger">11.6.1. OpenTracing with Jaeger</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_other">15. Other</a>
+<li><a href="#_other">12. Other</a>
 <ul class="sectlevel2">
-<li><a href="#component-vertx">15.1. Vert.x</a></li>
+<li><a href="#component-vertx">12.1. Vert.x</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_guides">Guides</a>
 <ul class="sectlevel1">
-<li><a href="#build-from-source">16. Build Thorntail from Source</a></li>
-<li><a href="#guide-container-layers">17. How to build Linux Containers as Layers</a></li>
-<li><a href="#guide-container-fabric8">18. How to build Linux Containers using Fabric8 Maven Plugin</a></li>
-<li><a href="#using-log4j">19. Using log4j</a></li>
+<li><a href="#build-from-source">13. Build Thorntail from Source</a></li>
+<li><a href="#guide-container-layers">14. How to build Linux Containers as Layers</a></li>
+<li><a href="#guide-container-fabric8">15. How to build Linux Containers using Fabric8 Maven Plugin</a></li>
+<li><a href="#using-log4j">16. Using log4j</a></li>
 </ul>
 </li>
 <li><a href="#_appendix">Appendix</a>
 <ul class="sectlevel1">
-<li><a href="#license">20. License</a></li>
+<li><a href="#license">17. License</a></li>
 </ul>
 </li>
 </ul>
@@ -632,9 +632,12 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="paragraph">
-<p>Thorntail is the next generation of WildFly Swarm.</p>
+<div class="title">About</div>
+<p><em>Thorntail</em> is the new name of <em>WildFly Swarm</em>.
+This documentation applies to the <em>proof of concept</em> for v4.x of the project.</p>
 </div>
 <div class="paragraph">
+<div class="title">Other Formats</div>
 <p>This documentation also available <a href="thorntail-docs-4.0.0-SNAPSHOT.pdf">in PDF format</a>.</p>
 </div>
 </div>
@@ -712,39 +715,34 @@ There were often times where fractions would be "Unstable" or "Experimental" for
 </div>
 </div>
 </div>
-<h1 id="_concepts" class="sect0"><a class="anchor" href="#_concepts"></a>Concepts</h1>
 <div class="sect1">
-<h2 id="microservice"><a class="anchor" href="#microservice"></a>2. Microservice</h2>
+<h2 id="_concepts"><a class="anchor" href="#_concepts"></a>2. Concepts</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="microservice"><a class="anchor" href="#microservice"></a>2.1. Microservice</h3>
 <div class="paragraph">
 <p>A microservice is small application with a <em>bounded domain</em>.
 A microservice is intended to solve a semantically constrained problem related to a larger system.
 In a microservice-based architecture, an <em>application</em> is made from a collection of many <em>microservices</em>.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="cdi-native"><a class="anchor" href="#cdi-native"></a>3. CDI-native</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="cdi-native"><a class="anchor" href="#cdi-native"></a>2.2. CDI-native</h3>
 <div class="paragraph">
 <p>Thorntail is built from the from ground-up to be CDI-native.
 Building applications of any notable size benefit from the usage of a dependency-injection framework.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="microprofile-native"><a class="anchor" href="#microprofile-native"></a>4. MicroProfile-native</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="microprofile-native"><a class="anchor" href="#microprofile-native"></a>2.3. MicroProfile-native</h3>
 <div class="paragraph">
 <p>Thorntail is built from the from ground-up to be MicroProfile-native.
 MicroProfile addresses many of the needs and requirements of microservices-centric applications.
 Instead of bolting MicroProfile facilities on, Thorntail natively supports the various MicroProfile specifications directly.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="flat-classpath"><a class="anchor" href="#flat-classpath"></a>5. Flat Classpath</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="flat-classpath"><a class="anchor" href="#flat-classpath"></a>2.4. Flat Classpath</h3>
 <div class="paragraph">
 <p>While Java application servers previously have had the ability to support multiple disparate applications, when building microservices, a runtime need only support a single application, or service.
 With a microservices architecture, significantly fewer resources and capabilities may be required for each service.
@@ -755,9 +753,10 @@ Freely mixing service and application implementations becomes significantly less
 </div>
 </div>
 </div>
+</div>
 <h1 id="_tools" class="sect0"><a class="anchor" href="#_tools"></a>Tools</h1>
 <div class="sect1">
-<h2 id="maven-plugin"><a class="anchor" href="#maven-plugin"></a>6. Maven Plugin</h2>
+<h2 id="maven-plugin"><a class="anchor" href="#maven-plugin"></a>3. Maven Plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>thorntail-maven-plugin</code> exists to make packaging your application easier.</p>
@@ -793,7 +792,7 @@ The behavior of this goal is controlled by the plugin configuration, described b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_modes"><a class="anchor" href="#_modes"></a>6.1. Modes</h3>
+<h3 id="_modes"><a class="anchor" href="#_modes"></a>3.1. Modes</h3>
 <div class="paragraph">
 <p>The plugin can operate in two modes: <em>fat</em> and <em>thin</em>, with <em>fat</em> being the default.
 The mode is selected by a <code>&lt;mode&gt;&#8230;&#8203;&lt;/mode&gt;</code> block within the plugin configuration, or by the <code>thorntail.mode</code> property.</p>
@@ -818,7 +817,7 @@ The mode is selected by a <code>&lt;mode&gt;&#8230;&#8203;&lt;/mode&gt;</code> b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_formats"><a class="anchor" href="#_formats"></a>6.2. Formats</h3>
+<h3 id="_formats"><a class="anchor" href="#_formats"></a>3.2. Formats</h3>
 <div class="paragraph">
 <p>The plugin can produce three different types of executable distributions: <em>jar</em>, <em>dir</em>, and <em>zip</em>, with <em>jar</em> being the default.
 The format is selected by a <code>&lt;format&gt;&#8230;&#8203;&lt;/format&gt;</code> block within the plugin configuration, or by the <code>thorntail.format</code> property.
@@ -848,7 +847,7 @@ To achieve this method, <code>mode</code> should be configured to be <code>thin<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_main_code"><a class="anchor" href="#_code_main_code"></a>6.3. <code>main()</code></h3>
+<h3 id="_code_main_code"><a class="anchor" href="#_code_main_code"></a>3.3. <code>main()</code></h3>
 <div class="paragraph">
 <p>The plugin will attempt to discover an existing non-ambiguous <code>main(&#8230;&#8203;)</code> within your application.
 If it finds none, a default <code>main(&#8230;&#8203;)</code> will be configured.
@@ -865,7 +864,7 @@ To resolve an ambiguous <code>main(&#8230;&#8203;)</code> error, a <code>mainCla
 </div>
 </div>
 <div class="sect2">
-<h3 id="_other_configuration"><a class="anchor" href="#_other_configuration"></a>6.4. Other configuration</h3>
+<h3 id="_other_configuration"><a class="anchor" href="#_other_configuration"></a>3.4. Other configuration</h3>
 <div class="paragraph">
 <div class="title">Naming</div>
 <p>The artifact produced will include the Maven classifier of <code>-bin</code>.
@@ -884,7 +883,7 @@ If the format is <code>dir</code>, it can not be attached.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_distribution_structure"><a class="anchor" href="#_distribution_structure"></a>6.5. Distribution Structure</h3>
+<h3 id="_distribution_structure"><a class="anchor" href="#_distribution_structure"></a>3.5. Distribution Structure</h3>
 <div class="paragraph">
 <div class="title">Directory and Zip</div>
 <p>When <code>dir</code> or <code>zip</code> formats are selected, the layout of the resulting tree is relatively simple:</p>
@@ -964,13 +963,13 @@ The extracted jars will have a SHA-1 hash added to their names in order to disam
 </div>
 </div>
 <div class="sect1">
-<h2 id="maven-archetypes"><a class="anchor" href="#maven-archetypes"></a>7. Maven Archetypes</h2>
+<h2 id="maven-archetypes"><a class="anchor" href="#maven-archetypes"></a>4. Maven Archetypes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Maven archetypes are provided to make it quick to get started with new Thorntail projects.</p>
 </div>
 <div class="sect2">
-<h3 id="_jax_rs"><a class="anchor" href="#_jax_rs"></a>7.1. JAX-RS</h3>
+<h3 id="_jax_rs"><a class="anchor" href="#_jax_rs"></a>4.1. JAX-RS</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -1000,7 +999,7 @@ These stubs include a JUnit-based test, along with appropriate configuration of 
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing-junit"><a class="anchor" href="#testing-junit"></a>8. Testing with JUnit</h2>
+<h2 id="testing-junit"><a class="anchor" href="#testing-junit"></a>5. Testing with JUnit</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Thorntail provides a JUnit <code>TestRunner</code> implementation which allows your JUnit tests to execute within the context of your full application.
@@ -1074,7 +1073,7 @@ The preconfiguration of the <code>baseURI</code> is especially useful when you u
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing-arquillian"><a class="anchor" href="#testing-arquillian"></a>9. Testing with Arquillian</h2>
+<h2 id="testing-arquillian"><a class="anchor" href="#testing-arquillian"></a>6. Testing with Arquillian</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Arquillian is a framework which assists with both blackbox and <em>in-container</em> testing of your components.
@@ -1154,7 +1153,7 @@ Any components your application creates, or which are normally available from Th
 </div>
 </div>
 <div class="sect1">
-<h2 id="devtools"><a class="anchor" href="#devtools"></a>10. Developer Tools</h2>
+<h2 id="devtools"><a class="anchor" href="#devtools"></a>7. Developer Tools</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Thorntail provides a set of developer tools to allow for restarting or reloading classes when developing a Thorntail-based application.
@@ -1239,7 +1238,7 @@ Triggering a recompilation from within your IDE should also cause hot reloading 
 </div>
 <h1 id="_components" class="sect0"><a class="anchor" href="#_components"></a>Components</h1>
 <div class="sect1">
-<h2 id="bom-maven"><a class="anchor" href="#bom-maven"></a>11. Using the BOM with Maven</h2>
+<h2 id="bom-maven"><a class="anchor" href="#bom-maven"></a>8. Using the BOM with Maven</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Use the BOM</div>
@@ -1265,7 +1264,7 @@ This allows you to reference any Thorntail component or verified version of a de
 </div>
 </div>
 <div class="sect1">
-<h2 id="component-kernel"><a class="anchor" href="#component-kernel"></a>12. Kernel</h2>
+<h2 id="component-kernel"><a class="anchor" href="#component-kernel"></a>9. Kernel</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Maven Coordinates</div>
@@ -1296,7 +1295,7 @@ If not found, it produces an empty <code>IndexView</code> instance.</p>
 </dl>
 </div>
 <div class="sect2">
-<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>12.1. Configuration</h3>
+<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>9.1. Configuration</h3>
 <div class="paragraph">
 <p>Configuration of applications built on Thorntail is performed using MicroProfile-config mechanisms.
 The default <code>microprofile-config.properties</code> file located within the <code>META-INF/</code> directory of the application can be used to set or override default configuration values.
@@ -1471,10 +1470,10 @@ If no such value exists, the value of <code>8080</code> will be provided, and co
 </div>
 </div>
 <div class="sect1">
-<h2 id="_java_ee"><a class="anchor" href="#_java_ee"></a>13. Java EE</h2>
+<h2 id="_java_ee"><a class="anchor" href="#_java_ee"></a>10. Java EE</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="component-bean-validation"><a class="anchor" href="#component-bean-validation"></a>13.1. Bean Validation</h3>
+<h3 id="component-bean-validation"><a class="anchor" href="#component-bean-validation"></a>10.1. Bean Validation</h3>
 <div class="paragraph">
 <p>The Bean Validation component provides for using <em>bean validation</em> according to JSR 380.</p>
 </div>
@@ -1504,7 +1503,7 @@ If no such value exists, the value of <code>8080</code> will be provided, and co
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-servlet"><a class="anchor" href="#component-servlet"></a>13.2. Servlet</h3>
+<h3 id="component-servlet"><a class="anchor" href="#component-servlet"></a>10.2. Servlet</h3>
 <div class="paragraph">
 <p>The Servlet component of Thorntail enables basic Java Web Servlet processing and serving.</p>
 </div>
@@ -1680,7 +1679,7 @@ This may be the same as the <code>InetSocketAddress</code> with the <code>@Prima
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jaxrs"><a class="anchor" href="#component-jaxrs"></a>13.3. JAX-RS</h3>
+<h3 id="component-jaxrs"><a class="anchor" href="#component-jaxrs"></a>10.3. JAX-RS</h3>
 <div class="paragraph">
 <p>The JAX-RS component provides support for the JAX-RS specification.
 The application will be scanned for an <code>Application</code> component annotated with <code>@ApplicationPath</code>.
@@ -1700,7 +1699,7 @@ If the discovered application does not provide a list of resources, they will be
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-websockets"><a class="anchor" href="#component-websockets"></a>13.4. WebSockets</h3>
+<h3 id="component-websockets"><a class="anchor" href="#component-websockets"></a>10.4. WebSockets</h3>
 <div class="paragraph">
 <p>The WebSockets components brings in support for JSR-356 websocket client and server endpoints.</p>
 </div>
@@ -1715,7 +1714,7 @@ If the discovered application does not provide a list of resources, they will be
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-json-p"><a class="anchor" href="#component-json-p"></a>13.5. JSON-P</h3>
+<h3 id="component-json-p"><a class="anchor" href="#component-json-p"></a>10.5. JSON-P</h3>
 <div class="paragraph">
 <p>The JSON-P component provides access to the JSON-P API.</p>
 </div>
@@ -1730,7 +1729,7 @@ If the discovered application does not provide a list of resources, they will be
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jndi"><a class="anchor" href="#component-jndi"></a>13.6. JNDI</h3>
+<h3 id="component-jndi"><a class="anchor" href="#component-jndi"></a>10.6. JNDI</h3>
 <div class="paragraph">
 <p>The JNDI component provides support for the Java Naming and Directory Interface.</p>
 </div>
@@ -1754,7 +1753,7 @@ If the discovered application does not provide a list of resources, they will be
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jdbc"><a class="anchor" href="#component-jdbc"></a>13.7. JDBC</h3>
+<h3 id="component-jdbc"><a class="anchor" href="#component-jdbc"></a>10.7. JDBC</h3>
 <div class="paragraph">
 <p>The JDBC component helps with auto-detecting and registering JDBC drivers.</p>
 </div>
@@ -1803,7 +1802,7 @@ If the discovered application does not provide a list of resources, they will be
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-datasources"><a class="anchor" href="#component-datasources"></a>13.8. DataSources</h3>
+<h3 id="component-datasources"><a class="anchor" href="#component-datasources"></a>10.8. DataSources</h3>
 <div class="paragraph">
 <p>The DataSources component provides access to managed JDBC datasources.</p>
 </div>
@@ -1859,7 +1858,7 @@ By setting to <code>ACTIVE</code>, only usage of the datasource when there is al
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jpa"><a class="anchor" href="#component-jpa"></a>13.9. JPA</h3>
+<h3 id="component-jpa"><a class="anchor" href="#component-jpa"></a>10.9. JPA</h3>
 <div class="paragraph">
 <p>The JPA component provides support for JPA <code>EntityManager</code> and <code>@PersistenceContext</code> resources.</p>
 </div>
@@ -1884,7 +1883,7 @@ By setting to <code>ACTIVE</code>, only usage of the <code>EntityManager</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jta"><a class="anchor" href="#component-jta"></a>13.10. JTA</h3>
+<h3 id="component-jta"><a class="anchor" href="#component-jta"></a>10.10. JTA</h3>
 <div class="paragraph">
 <p>The JTA component provides access to a <em>TransactionManager</em> and the JTA API.</p>
 </div>
@@ -1899,7 +1898,7 @@ By setting to <code>ACTIVE</code>, only usage of the <code>EntityManager</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jca"><a class="anchor" href="#component-jca"></a>13.11. JCA</h3>
+<h3 id="component-jca"><a class="anchor" href="#component-jca"></a>10.11. JCA</h3>
 <div class="paragraph">
 <p>The JCA component provides for using <em>resource adapters</em>.</p>
 </div>
@@ -1977,7 +1976,7 @@ These components are generally short-lived and managed by the appropriate resour
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jms"><a class="anchor" href="#component-jms"></a>13.12. JMS</h3>
+<h3 id="component-jms"><a class="anchor" href="#component-jms"></a>10.12. JMS</h3>
 <div class="paragraph">
 <p>The JMS component provides for easily connecting to remote message brokers.
 By itself, the JMS component provides no particular JMS client.
@@ -2023,7 +2022,7 @@ See <code>jms-artemis</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jms-artemis"><a class="anchor" href="#component-jms-artemis"></a>13.13. JMS-Artemis</h3>
+<h3 id="component-jms-artemis"><a class="anchor" href="#component-jms-artemis"></a>10.13. JMS-Artemis</h3>
 <div class="paragraph">
 <p>The JMS-Artemis component provides for easily connecting to an external ActiveMQ Artemis message broker.</p>
 </div>
@@ -2068,16 +2067,16 @@ See <code>jms-artemis</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_microprofile"><a class="anchor" href="#_microprofile"></a>14. MicroProfile</h2>
+<h2 id="_microprofile"><a class="anchor" href="#_microprofile"></a>11. MicroProfile</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="component-config"><a class="anchor" href="#component-config"></a>14.1. Config</h3>
+<h3 id="component-config"><a class="anchor" href="#component-config"></a>11.1. Config</h3>
 <div class="paragraph">
 <p>Configuration is a in-built component of the <em>core</em> component, and requires no additional Maven dependency.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-faulttolerance"><a class="anchor" href="#component-faulttolerance"></a>14.2. Fault Tolerance</h3>
+<h3 id="component-faulttolerance"><a class="anchor" href="#component-faulttolerance"></a>11.2. Fault Tolerance</h3>
 <div class="paragraph">
 <p>The Fault Tolerance component supports the MicroProfile Fault Tolerance specification.</p>
 </div>
@@ -2092,7 +2091,7 @@ See <code>jms-artemis</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-health"><a class="anchor" href="#component-health"></a>14.3. Health</h3>
+<h3 id="component-health"><a class="anchor" href="#component-health"></a>11.3. Health</h3>
 <div class="paragraph">
 <p>The Health component provides support for the MicroProfile Health API.</p>
 </div>
@@ -2115,7 +2114,7 @@ See <code>jms-artemis</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-metrics"><a class="anchor" href="#component-metrics"></a>14.4. Metrics</h3>
+<h3 id="component-metrics"><a class="anchor" href="#component-metrics"></a>11.4. Metrics</h3>
 <div class="paragraph">
 <p>The Metrics component supports the collection and reporting of metrics using the MicroProfile Metrics spec.
 This includes providing a Prometheus-compliant endpoint.</p>
@@ -2144,7 +2143,7 @@ Please refer to each component&#8217;s documentation for details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-openapi"><a class="anchor" href="#component-openapi"></a>14.5. OpenAPI</h3>
+<h3 id="component-openapi"><a class="anchor" href="#component-openapi"></a>11.5. OpenAPI</h3>
 <div class="paragraph">
 <p>The OpenAPI component supports the generation of an OpenAPI document representing the JAX-RS Resources using the MicroProfile OpenAPI spec.</p>
 </div>
@@ -2172,7 +2171,7 @@ The /openapi endpoint is accessible under the management host and port.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-opentracing"><a class="anchor" href="#component-opentracing"></a>14.6. OpenTracing</h3>
+<h3 id="component-opentracing"><a class="anchor" href="#component-opentracing"></a>11.6. OpenTracing</h3>
 <div class="paragraph">
 <p>The OpenTracing component supports the MicroProfile OpenTracing specification.</p>
 </div>
@@ -2217,7 +2216,7 @@ The discovered <code>Tracer</code> will be registered with the <code>GlobalTrace
 </ul>
 </div>
 <div class="sect3">
-<h4 id="component-opentracing-jaeger"><a class="anchor" href="#component-opentracing-jaeger"></a>14.6.1. OpenTracing with Jaeger</h4>
+<h4 id="component-opentracing-jaeger"><a class="anchor" href="#component-opentracing-jaeger"></a>11.6.1. OpenTracing with Jaeger</h4>
 <div class="paragraph">
 <p>The OpenTracing component can detect the presence of Jaeger and enable its tracer.</p>
 </div>
@@ -2285,10 +2284,10 @@ Otherwise, the UDP sender will be used and configured via <code>jaeger.agent.hos
 </div>
 </div>
 <div class="sect1">
-<h2 id="_other"><a class="anchor" href="#_other"></a>15. Other</h2>
+<h2 id="_other"><a class="anchor" href="#_other"></a>12. Other</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="component-vertx"><a class="anchor" href="#component-vertx"></a>15.1. Vert.x</h3>
+<h3 id="component-vertx"><a class="anchor" href="#component-vertx"></a>12.1. Vert.x</h3>
 <div class="paragraph">
 <p>The Vert.x component provides access to the Vert.x event-bus and message-driven consumers.</p>
 </div>
@@ -2388,7 +2387,7 @@ They are managed by the CDI container, though, and may have other components inj
 </div>
 <h1 id="_guides" class="sect0"><a class="anchor" href="#_guides"></a>Guides</h1>
 <div class="sect1">
-<h2 id="build-from-source"><a class="anchor" href="#build-from-source"></a>16. Build Thorntail from Source</h2>
+<h2 id="build-from-source"><a class="anchor" href="#build-from-source"></a>13. Build Thorntail from Source</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The source of Thorntail is available on <a href="https://github.com/thorntail/thorntail">GitHub</a>.</p>
@@ -2462,7 +2461,7 @@ To enable them, use the <code>-Ptck</code> option to enable the TCK profile.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="guide-container-layers"><a class="anchor" href="#guide-container-layers"></a>17. How to build Linux Containers as Layers</h2>
+<h2 id="guide-container-layers"><a class="anchor" href="#guide-container-layers"></a>14. How to build Linux Containers as Layers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Your application can be packaged as a multi-layered Linux Container using the Fabric8 <code>docker-maven-plugin</code>.</p>
@@ -2640,7 +2639,7 @@ It uses the built-in <code>&lt;descriptorRef&gt;</code> of <code>artifact</code>
 </div>
 </div>
 <div class="sect1">
-<h2 id="guide-container-fabric8"><a class="anchor" href="#guide-container-fabric8"></a>18. How to build Linux Containers using Fabric8 Maven Plugin</h2>
+<h2 id="guide-container-fabric8"><a class="anchor" href="#guide-container-fabric8"></a>15. How to build Linux Containers using Fabric8 Maven Plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Fabric8 <code>docker-maven-plugin</code> is a Maven plugin which makes it easy to create, push and run Linux container images.</p>
@@ -2729,7 +2728,7 @@ This causes both your project artifact and all transitive dependencies to be cop
 </div>
 </div>
 <div class="sect1">
-<h2 id="using-log4j"><a class="anchor" href="#using-log4j"></a>19. Using log4j</h2>
+<h2 id="using-log4j"><a class="anchor" href="#using-log4j"></a>16. Using log4j</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Problem</div>
@@ -2759,7 +2758,7 @@ In a Thorntail application you can just place this file in the root of your sour
 </div>
 <h1 id="_appendix" class="sect0"><a class="anchor" href="#_appendix"></a>Appendix</h1>
 <div class="sect1">
-<h2 id="license"><a class="anchor" href="#license"></a>20. License</h2>
+<h2 id="license"><a class="anchor" href="#license"></a>17. License</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
