@@ -1536,6 +1536,34 @@ By default, these management deployments will be automatically deployed alongsid
 The servlet component may be configured (see below) to separate application endpoints from management endpoints.</p>
 </div>
 <div class="paragraph">
+<div class="title">Static Content</div>
+<p>Your application may provide static resources through its classpath, under <code>static/</code>, <code>public/</code> or <code>META-INF/resources/</code> within your jar.
+In a Maven-based project, that would be represented by paths such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>src/main/resources/static/</code></p>
+</li>
+<li>
+<p><code>src/main/resources/public/</code></p>
+</li>
+<li>
+<p><code>src/main/resources/META-INF/resources/</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any file in the root of those directories would be served at the root of your application&#8217;s context path.
+The <code>static</code> or <code>public</code> prefix is not included in the resulting URL.</p>
+</div>
+<div class="paragraph">
+<p>For instance:</p>
+</div>
+<div class="paragraph">
+<p><code>src/main/resources/static/index.html</code> would be served by default at <code>/index.html</code>.</p>
+</div>
+<div class="paragraph">
 <div class="title">Configuration of Primary Endpoints</div>
 <p>If the management endpoints (see below) are not configured separately, then the primary configuration applies to all endpoints.</p>
 </div>
