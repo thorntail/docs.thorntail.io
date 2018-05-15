@@ -1294,13 +1294,17 @@ It&#8217;s Maven coordinates are:</p>
 <div class="dlist">
 <div class="title">CDI Components</div>
 <dl>
-<dt class="hdlist1"><code>ThreadFactoryProducer</code></dt>
+<dt class="hdlist1"><code>ThreadFactory</code></dt>
 <dd>
-<p>Produces a <code>Dependent</code> scoped <code>ThreadFactory</code> for utilizing <code>Thread</code> instances.</p>
+<p>A <code>@Dependent</code>-scoped <code>ThreadFactory</code> for utilizing <code>Thread</code> instances.</p>
 </dd>
-<dt class="hdlist1"><code>IndexProducer</code></dt>
+<dt class="hdlist1"><code>ExecutorService</code></dt>
 <dd>
-<p>Produces an <code>Application</code> scoped <code>IndexView</code> representing the jandex&#8217;d files of the Deployment,
+<p>An <code>ExecutorService</code> for executing tasks.</p>
+</dd>
+<dt class="hdlist1"><code>IndexView</code></dt>
+<dd>
+<p>An <code>@Application</code>-scoped <code>IndexView</code> representing the jandex&#8217;d files of the Deployment,
 read from <code>META-INF/thorntail.idx</code> which is created by the plugin.
 If not found, it produces an empty <code>IndexView</code> instance.</p>
 </dd>
@@ -1920,6 +1924,14 @@ By setting to <code>ACTIVE</code>, only usage of the datasource when there is al
 By setting to <code>ACTIVE</code>, only usage of the <code>EntityManager</code> when there is already an active parent context will be traced.</p>
 </dd>
 </dl>
+</div>
+<div class="ulist">
+<div class="title">Related Information</div>
+<ul>
+<li>
+<p><a href="#component-jpa-support">[component-jpa-support]</a></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
