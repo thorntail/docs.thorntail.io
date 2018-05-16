@@ -580,10 +580,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#component-jdbc">10.7. JDBC</a></li>
 <li><a href="#component-datasources">10.8. DataSources</a></li>
 <li><a href="#component-jpa">10.9. JPA</a></li>
-<li><a href="#component-jta">10.10. JTA</a></li>
-<li><a href="#component-jca">10.11. JCA</a></li>
-<li><a href="#component-jms">10.12. JMS</a></li>
-<li><a href="#component-jms-artemis">10.13. JMS-Artemis</a></li>
+<li><a href="#component-jpa-support">10.10. JPA Support</a></li>
+<li><a href="#component-jta">10.11. JTA</a></li>
+<li><a href="#component-jca">10.12. JCA</a></li>
+<li><a href="#component-jms">10.13. JMS</a></li>
+<li><a href="#component-jms-artemis">10.14. JMS-Artemis</a></li>
 </ul>
 </li>
 <li><a href="#_microprofile">11. MicroProfile</a>
@@ -603,6 +604,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_other">12. Other</a>
 <ul class="sectlevel2">
 <li><a href="#component-vertx">12.1. Vert.x</a></li>
+<li><a href="#component-ogm">12.2. OGM</a></li>
 </ul>
 </li>
 </ul>
@@ -1929,13 +1931,36 @@ By setting to <code>ACTIVE</code>, only usage of the <code>EntityManager</code> 
 <div class="title">Related Information</div>
 <ul>
 <li>
-<p><a href="#component-jpa-support">[component-jpa-support]</a></p>
+<p><a href="#component-jpa-support">JPA Support</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jta"><a class="anchor" href="#component-jta"></a>10.10. JTA</h3>
+<h3 id="component-jpa-support"><a class="anchor" href="#component-jpa-support"></a>10.10. JPA Support</h3>
+<div class="paragraph">
+<p>The JPA Support component provides support for JPA <code>EntityManager</code> and <code>@PersistenceContext</code> resources inside of a CDI container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@RequestScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">EmployeeDao</span> {
+        <span class="annotation">@PersistenceContext</span>
+        EntityManager em;
+
+        <span class="annotation">@PersistenceUnit</span>
+        EntityManagerFactory emf;
+
+        <span class="directive">public</span> Employee getEmployeeById(<span class="predefined-type">Long</span> employeeId){
+                <span class="keyword">return</span> em.find(Employee.class, employeeId);
+        }
+        ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="component-jta"><a class="anchor" href="#component-jta"></a>10.11. JTA</h3>
 <div class="paragraph">
 <p>The JTA component provides access to a <em>TransactionManager</em> and the JTA API.</p>
 </div>
@@ -1950,7 +1975,7 @@ By setting to <code>ACTIVE</code>, only usage of the <code>EntityManager</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jca"><a class="anchor" href="#component-jca"></a>10.11. JCA</h3>
+<h3 id="component-jca"><a class="anchor" href="#component-jca"></a>10.12. JCA</h3>
 <div class="paragraph">
 <p>The JCA component provides for using <em>resource adapters</em>.</p>
 </div>
@@ -2028,7 +2053,7 @@ These components are generally short-lived and managed by the appropriate resour
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jms"><a class="anchor" href="#component-jms"></a>10.12. JMS</h3>
+<h3 id="component-jms"><a class="anchor" href="#component-jms"></a>10.13. JMS</h3>
 <div class="paragraph">
 <p>The JMS component provides for easily connecting to remote message brokers.
 By itself, the JMS component provides no particular JMS client.
@@ -2074,7 +2099,7 @@ See <code>jms-artemis</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="component-jms-artemis"><a class="anchor" href="#component-jms-artemis"></a>10.13. JMS-Artemis</h3>
+<h3 id="component-jms-artemis"><a class="anchor" href="#component-jms-artemis"></a>10.14. JMS-Artemis</h3>
 <div class="paragraph">
 <p>The JMS-Artemis component provides for easily connecting to an external ActiveMQ Artemis message broker.</p>
 </div>
@@ -2431,6 +2456,72 @@ They are managed by the CDI container, though, and may have other components inj
 <ul>
 <li>
 <p><a href="#component-jca">JCA</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="component-ogm"><a class="anchor" href="#component-ogm"></a>12.2. OGM</h3>
+<div class="paragraph">
+<p>Provides support for Hibernate OGM <code>EntityManager</code> and <code>@PersistenceContext</code> resources and allows for the use of NoSQL datastores with JPA.</p>
+</div>
+<div class="ulist">
+<div class="title">Supported Datastores</div>
+<ul>
+<li>
+<p>Infinispan</p>
+</li>
+<li>
+<p>MongoDB</p>
+</li>
+<li>
+<p>Neo4j</p>
+</li>
+<li>
+<p>Cassandra</p>
+</li>
+<li>
+<p>CouchDB</p>
+</li>
+<li>
+<p>EhCache</p>
+</li>
+<li>
+<p>Apache Ignite</p>
+</li>
+<li>
+<p>Redis</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>thorntail-ogm<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Version of Hibernate Search is managed by the Thorntail bom to ensure compatibility with OGM. Add the following to <code>pom.xml</code> if required by the NoSQL driver in use with OGM.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.hibernate<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>hibernate-search-orm<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<div class="title">Related Information</div>
+<ul>
+<li>
+<p><a href="#component-jpa-support">JPA Support</a></p>
+</li>
+<li>
+<p><a href="https://docs.jboss.org/hibernate/ogm/5.3/reference/en-US/html_single/">Hibernate OGM 5.3 Documentation</a></p>
 </li>
 </ul>
 </div>
