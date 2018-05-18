@@ -740,7 +740,7 @@ And a lot of complexity.</p>
 <div class="paragraph">
 <div class="title">Just CDI Bean Archives</div>
 <p>Instead of magic <em>fractions</em> with a lot of ceremony and boiler-plate, a Thorntail component is usually just a plain CDI bean archive.
-These archives may include CDI beans, extensions, and optional default configuration (provided through MicroProfile-Configuration mechanisms).</p>
+These archives may include CDI beans, extensions, and optional default configuration (provided through MicroProfile Config mechanisms).</p>
 </div>
 <div class="paragraph">
 <div class="title">Application &amp; Runtimes Mix</div>
@@ -770,7 +770,7 @@ For instance, <code>thorntail-servlet</code> contains a CDI extension that scans
 <div class="title">Optional Dependency-enabled Functionality</div>
 <p>For functionality such as OpenTracing, the ability to detect the presence of implementations is baked into the kernel.
 When a particular dependency is available (such as Jaeger), additional capability is enabled.
-Through the usage of <code>@RequiredClassPresent</code>, entire CDI beans and producers may be automatically vetoed (disabled) if particularly classes are not present.</p>
+Through the usage of <code>@RequiredClassPresent</code>, entire CDI beans and producers may be automatically vetoed (disabled) if particular classes are not present.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -792,7 +792,7 @@ Through the usage of <code>@RequiredClassPresent</code>, entire CDI beans and pr
 <p>In the above situation, if Jaeger&#8217;s <code>Configuration</code> class is not available on the classpath through dependencies, then the Jaeger-based <code>Tracer</code> will not be produced.</p>
 </div>
 <div class="paragraph">
-<p>Multiple instances of <code>@RequiredClassPresent</code> and its inverse,<code>@RequiredClassNotPresent</code>, may be applied.
+<p>Multiple instances of <code>@RequiredClassPresent</code> and its inverse, <code>@RequiredClassNotPresent</code>, may be applied.
 If either annotation is supplied, then <em>all</em> annotations must be true to prevent the automatic disabling of that component.</p>
 </div>
 </div>
