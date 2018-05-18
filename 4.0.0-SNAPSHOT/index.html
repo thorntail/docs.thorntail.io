@@ -903,6 +903,21 @@ In this case, you may also use <code>io.thorntail.Main</code>.</p>
 <div class="paragraph">
 <p>Now you may directly execute your <code>MyMain</code> class directly from your IDE.</p>
 </div>
+<div class="paragraph">
+<div class="title">When Using Other Frameworks</div>
+<p>One common pattern, when using a framework such as JAX-RS, is to place the <code>main(&#8230;&#8203;)</code> within the primary application class, instead of a specialized class.
+With JAX-RS, the <code>Application</code> is a prime candidate:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationPath</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyApplication</span> <span class="directive">extends</span> Application {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span>... args) <span class="directive">throws</span> <span class="exception">Exception</span> {
+        Main.main(args);
+    }
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <h1 id="_tools" class="sect0"><a class="anchor" href="#_tools"></a>Tools</h1>
