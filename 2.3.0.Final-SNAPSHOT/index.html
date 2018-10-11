@@ -1980,11 +1980,15 @@ to your application.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add the appropriate dependency (with the default <code>&lt;scope&gt;compile&lt;/scope&gt;</code>
+<p>Add the appropriate dependencies (with the default <code>&lt;scope&gt;compile&lt;/scope&gt;</code>
 scope) to your application:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>datasources<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>com.h2database<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>h2<span class="tag">&lt;/artifactId&gt;</span>
@@ -2002,6 +2006,9 @@ scope) to your application:</p>
   <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>H2 is the default database in Thorntail.</p>
 </div>
 </li>
 </ol>
@@ -2024,6 +2031,19 @@ This file is necessary to expose the driver through JBoss Modules.</p>
 <h6 id="_procedure_6" class="discrete">Procedure</h6>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>Add the <code>io.thorntail:datasources</code> dependency to the <code>pom.xml</code> file in your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>datasources<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+</li>
 <li>
 <p>Edit the <code>project-defaults.yml</code> file to define the driver information.</p>
 <div class="paragraph">
@@ -4250,6 +4270,224 @@ Only the items related to the fractions that your application uses are relevant 
 <h4 id="configuring-a-thorntail-application-using-system-properties_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-system-properties_thorntail"></a>5.2.1. System properties</h4>
 <div class="paragraph">
 <p>Using system properties for configuring your application is advantageous for experimenting, debugging, and other short-term activities.</p>
+</div>
+<div class="sect4">
+<h5 id="commonly-used-system-properties_thorntail"><a class="anchor" href="#commonly-used-system-properties_thorntail"></a>Commonly used system properties</h5>
+<div class="paragraph">
+<p>This is a non-exhaustive list of system properties you are likely to use in your application:</p>
+</div>
+<div class="dlist">
+<div class="title">General system properties</div>
+<dl>
+<dt class="hdlist1">swarm.bind.address</dt>
+<dd>
+<p>The interface to bind servers</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>0.0.0.0</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.port.offset</dt>
+<dd>
+<p>The global port adjustment</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>0</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.context.path</dt>
+<dd>
+<p>The context path for the deployed application</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>/</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.http.port</dt>
+<dd>
+<p>The port for the HTTP server</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>8080</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.https.port</dt>
+<dd>
+<p>The port for the HTTPS server</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>8483</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.debug.port</dt>
+<dd>
+<p>If provided, the swarm process will pause for debugging on the given port.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This option is only available when running an Arquillian test or starting the application using the <code>mvn wildfly-swarm:run</code> command, not when executing a JAR file.
+The JAR file execution requires normal Java debug agent parameters.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>With the H2, MySQL, and Postgres database fractions,  use the following properties to configure the datasource:</p>
+</div>
+<div class="dlist">
+<div class="title">Datasource-related system properties</div>
+<dl>
+<dt class="hdlist1">swarm.ds.name</dt>
+<dd>
+<p>The name of the datasource</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ExampleDS</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.ds.username</dt>
+<dd>
+<p>The user name to access the database</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>driver-specific</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.ds.password</dt>
+<dd>
+<p>The password to access the database</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>driver-specific</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt class="hdlist1">swarm.ds.connection.url</dt>
+<dd>
+<p>The JDBC Connection URL</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>driver-specific</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For a full set of available properties, see the documentation for each fraction and the javadocs on class
+<a href="https://github.com/thorntail/thorntail/blob/2.3.0.Final-SNAPSHOT/core/spi/src/main/java/org/wildfly/swarm/spi/api/SwarmProperties.java">SwarmProperties.java</a>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect4">
 <h5 id="application-configuration-using-system-properties_thorntail"><a class="anchor" href="#application-configuration-using-system-properties_thorntail"></a>Application configuration using system properties</h5>
@@ -22679,7 +22917,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-10-11 07:50:37 MST
+Last updated 2018-10-11 12:04:45 MST
 </div>
 </div>
 </body>
