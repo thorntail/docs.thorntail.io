@@ -13773,6 +13773,10 @@ according to JSR-3.</p>
 <dd>
 <p>Password to the encryption private key</p>
 </dd>
+<dt class="hdlist1">swarm.jose.include-encryption-key-alias</dt>
+<dd>
+<p>Include the encryption key alias as the JOSE 'kid' header (defaults to true)</p>
+</dd>
 <dt class="hdlist1">swarm.jose.key-encryption-algorithm</dt>
 <dd>
 <p>Key encryption algorithm: see RFC7518, Section 4</p>
@@ -13820,6 +13824,10 @@ according to JSR-3.</p>
 <dt class="hdlist1">thorntail.jose.encryption.format</dt>
 <dd>
 <p>Encryption format: COMPACT (default) or JSON (support is optional)</p>
+</dd>
+<dt class="hdlist1">thorntail.jose.encryption.include.alias</dt>
+<dd>
+<p>Include the encryption key alias as the JOSE 'kid' header (defaults to true)</p>
 </dd>
 <dt class="hdlist1">thorntail.jose.encryption.key.alias</dt>
 <dd>
@@ -22917,7 +22925,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-10-15 10:42:50 MST
+Last updated 2018-10-24 04:43:38 MST
 </div>
 </div>
 </body>
