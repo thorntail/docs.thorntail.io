@@ -693,13 +693,19 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#configuring-a-thorntail-application-using-yaml-files_thorntail">5.2.2. YAML files</a></li>
 </ul>
 </li>
-<li><a href="#network-configuration_thorntail">5.3. Network configuration</a>
+<li><a href="#prebuilt-servers_thorntail">5.3. Pre-built servers</a>
 <ul class="sectlevel3">
-<li><a href="#_interfaces">5.3.1. Interfaces</a></li>
-<li><a href="#_sockets">5.3.2. Sockets</a></li>
+<li><a href="#thorntail-microprofile-server_thorntail">5.3.1. Thorntail Microprofile server</a></li>
+<li><a href="#thorntail-keycloak-server_thorntail">5.3.2. Thorntail Keycloak server</a></li>
 </ul>
 </li>
-<li><a href="#the-usage-txt-file_thorntail">5.4. The usage.txt file</a></li>
+<li><a href="#network-configuration_thorntail">5.4. Network configuration</a>
+<ul class="sectlevel3">
+<li><a href="#_interfaces">5.4.1. Interfaces</a></li>
+<li><a href="#_sockets">5.4.2. Sockets</a></li>
+</ul>
+</li>
+<li><a href="#the-usage-txt-file_thorntail">5.5. The usage.txt file</a></li>
 </ul>
 </li>
 <li><a href="#_fractions">6. Fractions</a>
@@ -992,6 +998,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
+<li><a href="#_getting_involved">Getting Involved</a></li>
 </ul>
 </div>
 </div>
@@ -4785,13 +4792,63 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 <div class="sect2">
-<h3 id="network-configuration_thorntail"><a class="anchor" href="#network-configuration_thorntail"></a>5.3. Network configuration</h3>
+<h3 id="prebuilt-servers_thorntail"><a class="anchor" href="#prebuilt-servers_thorntail"></a>5.3. Pre-built servers</h3>
+<div class="paragraph">
+<p>There are pre-built stand-alone servers available for Thorntail. The source code is available on <a href="https://github.com/thorntail/thorntail/tree/master/standalone-servers">GitHub</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="thorntail-microprofile-server_thorntail"><a class="anchor" href="#thorntail-microprofile-server_thorntail"></a>5.3.1. Thorntail Microprofile server</h4>
+<div class="paragraph">
+<p><a href="https://projects.eclipse.org/projects/technology.microprofile">MicroProfile</a> is a project aimed at optimizing Enterpise Java for the microservices architecture.</p>
+</div>
+<div class="paragraph">
+<p>Thorntail implements <a href="https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-1.3">MicroProfile 1.3</a> and provides a stand-alone MicroProfile server that you can use to deploy compliant WAR applications.</p>
+</div>
+<h5 id="_download" class="discrete">Download</h5>
+<div class="paragraph">
+<p>Download the server from <a href="https://search.maven.org/artifact/io.thorntail.servers/microprofile/2.3.0.Final-SNAPSHOT/jar">Maven Central</a>.</p>
+</div>
+<h5 id="_usage" class="discrete">Usage</h5>
+<div class="paragraph">
+<p>To start the server, execute the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar microprofile-{version}-hollow-thorntail.jar myapp.war</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="thorntail-keycloak-server_thorntail"><a class="anchor" href="#thorntail-keycloak-server_thorntail"></a>5.3.2. Thorntail Keycloak server</h4>
+<div class="paragraph">
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open source identity and access management solution.</p>
+</div>
+<div class="paragraph">
+<p>Thorntail provides a stand-alone Keycloak server that you can use to test and run Keycloak Server on top of Thorntail.</p>
+</div>
+<h5 id="_download_2" class="discrete">Download</h5>
+<div class="paragraph">
+<p>Download the server from <a href="https://search.maven.org/artifact/io.thorntail.servers/keycloak/2.3.0.Final-SNAPSHOT/jar">Maven Central</a>.</p>
+</div>
+<h5 id="_usage_2" class="discrete">Usage</h5>
+<div class="paragraph">
+<p>To start the server, execute the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar keycloak-{version}-thorntail.jar</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="network-configuration_thorntail"><a class="anchor" href="#network-configuration_thorntail"></a>5.4. Network configuration</h3>
 <div class="paragraph">
 <p>For network configuration, create or adjust <em>interfaces,</em> <em>socket-bindings,</em> and <em>outbound-socket-bindings.</em>
 The networking configuration is stored under the <code>network</code> &#8594; <code>thorntail</code> key.</p>
 </div>
 <div class="sect3">
-<h4 id="_interfaces"><a class="anchor" href="#_interfaces"></a>5.3.1. Interfaces</h4>
+<h4 id="_interfaces"><a class="anchor" href="#_interfaces"></a>5.4.1. Interfaces</h4>
 <div class="paragraph">
 <p>An interface represents a known ethernet interface.
 By default, the interface named <code>public</code> is bound to the <code>0.0.0.0</code> IP address, which represents all known interfaces of the underlying machine.
@@ -4835,7 +4892,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sockets"><a class="anchor" href="#_sockets"></a>5.3.2. Sockets</h4>
+<h4 id="_sockets"><a class="anchor" href="#_sockets"></a>5.4.2. Sockets</h4>
 <div class="paragraph">
 <p><em>Socket bindings</em> and <em>outbound socket bindings</em> allow externalized configuration of sockets and ports bound to a particular interface.
 Use regular socket-bindings for inbound connections, while outbound-socket-bindings denote connections capable of changing to remote locations.</p>
@@ -4906,7 +4963,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="sect2">
-<h3 id="the-usage-txt-file_thorntail"><a class="anchor" href="#the-usage-txt-file_thorntail"></a>5.4. The usage.txt file</h3>
+<h3 id="the-usage-txt-file_thorntail"><a class="anchor" href="#the-usage-txt-file_thorntail"></a>5.5. The usage.txt file</h3>
 <div class="paragraph">
 <p>Each Thorntail application can contain a text file with usage instructions at one of the following locations:</p>
 </div>
@@ -22921,11 +22978,22 @@ and JSR-52.</p>
 </div>
 </div>
 </div>
+<h1 id="_getting_involved" class="sect0"><a class="anchor" href="#_getting_involved"></a>Getting Involved</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Community contributions are always welcome.</p>
+</div>
+<div class="paragraph">
+<p>For more information about how to get involved, see our <a href="https://thorntail.io/community/">Community website</a>.</p>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-10-30 03:00:32 MST
+Last updated 2018-10-30 05:29:04 MST
 </div>
 </div>
 </body>
