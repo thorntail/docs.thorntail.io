@@ -2986,21 +2986,27 @@ For more information, see the <a href="https://grafana.com/" target="_blank" rel
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Get the default Prometheus configuration using the following command:</p>
+<p>Download and extract the <a href="https://prometheus.io/download/" target="_blank" rel="noopener">archive</a> with the latest Prometheus release:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash"># docker run -it --rm --entrypoint /bin/sh prom/prometheus -c 'cat /etc/prometheus/prometheus.yml'</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ wget https://github.com/prometheus/prometheus/releases/download/v2.4.3/prometheus-2.4.3.linux-amd64.tar.gz
+$ tar -xvf  prometheus-2.4.3.linux-amd64.tar.gz</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Store the output in the <code>prometheus.yml</code> file in the directory with your application.</p>
+</li>
+<li>
+<p>Navigate to the directory with Prometheus:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ cd  prometheus-2.4.3.linux-amd64</code></pre>
+</div>
 </div>
 </li>
 <li>
 <p>Append the following snippet to the <code>prometheus.yml</code> file to make Prometheus automatically collect metrics from your application:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="yaml">  - <span class="string"><span class="content">job_name: 'thorntail'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml">  - <span class="string"><span class="content">job_name: 'thorntail'</span></span>
     <span class="key">static_configs</span>:
     - <span class="string"><span class="content">targets: ['localhost:8080']</span></span></code></pre>
 </div>
@@ -3016,19 +3022,16 @@ This is what the MicroProfile Metrics specification requires, and also what Prom
 </div>
 </li>
 <li>
-<p>The Prometheus server running on <code>localhost</code> using Docker:</p>
+<p>The Prometheus server started on <code>localhost</code>:</p>
 <div class="openblock">
 <div class="content">
+<div class="paragraph">
+<p>Start Prometheus and wait until the <code>Server is ready to receive web requests</code> message is displayed in the console.</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash"># docker run -it --rm --network host -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ ./prometheus</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Wait until the <code>Server is ready to receive web requests</code> message is displayed in the console.</p>
-</div>
-<div class="paragraph">
-<p>Notice the <code>--network host</code> option so that Prometheus can connect to your application.</p>
 </div>
 </div>
 </div>
@@ -3039,7 +3042,7 @@ This is what the MicroProfile Metrics specification requires, and also what Prom
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Include the <code>microprofile-metrics</code> fraction in your <code>pom.xml</code>.</p>
+<p>Include the <code>microprofile-metrics</code> fraction in the <code>pom.xml</code> file in your application:</p>
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
@@ -23028,7 +23031,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-11-07 06:42:21 MST
+Last updated 2018-11-07 11:04:21 MST
 </div>
 </div>
 </body>
