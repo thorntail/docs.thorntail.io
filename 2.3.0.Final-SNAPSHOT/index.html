@@ -13827,7 +13827,15 @@ according to JSR-3.</p>
 </dd>
 <dt class="hdlist1">swarm.jose.encryption-key-alias</dt>
 <dd>
-<p>Alias to the encryption key entry in the keystore</p>
+<p>Key Alias in the keystore to be used for the encryption or decryption, by default</p>
+</dd>
+<dt class="hdlist1">swarm.jose.encryption-key-alias-in</dt>
+<dd>
+<p>Key Alias in the keystore to be used for decryption only</p>
+</dd>
+<dt class="hdlist1">swarm.jose.encryption-key-alias-out</dt>
+<dd>
+<p>Key Alias in the keystore to be used for encryption only</p>
 </dd>
 <dt class="hdlist1">swarm.jose.encryption-key-password</dt>
 <dd>
@@ -13873,6 +13881,14 @@ according to JSR-3.</p>
 <dd>
 <p>Alias to the signature key entry in the keystore</p>
 </dd>
+<dt class="hdlist1">swarm.jose.signature-key-alias-in</dt>
+<dd>
+<p>Alias to the signature key entry in the keystore used for verification only</p>
+</dd>
+<dt class="hdlist1">swarm.jose.signature-key-alias-out</dt>
+<dd>
+<p>Alias to the signature key entry in the keystore used for signing only</p>
+</dd>
 <dt class="hdlist1">swarm.jose.signature-key-password</dt>
 <dd>
 <p>Password to the signature private key</p>
@@ -13885,13 +13901,17 @@ according to JSR-3.</p>
 <dd>
 <p>Encryption format: COMPACT (default) or JSON (support is optional)</p>
 </dd>
+<dt class="hdlist1">thorntail.jose.encryption.in.key.alias</dt>
+<dd>
+<p>Key Alias in the keystore to be used for decryption only</p>
+</dd>
 <dt class="hdlist1">thorntail.jose.encryption.include.alias</dt>
 <dd>
 <p>Include the encryption key alias as the JOSE 'kid' header (defaults to true)</p>
 </dd>
 <dt class="hdlist1">thorntail.jose.encryption.key.alias</dt>
 <dd>
-<p>Alias to the encryption key entry in the keystore</p>
+<p>Key Alias in the keystore to be used for the encryption or decryption, by default</p>
 </dd>
 <dt class="hdlist1">thorntail.jose.encryption.key.password</dt>
 <dd>
@@ -13900,6 +13920,10 @@ according to JSR-3.</p>
 <dt class="hdlist1">thorntail.jose.encryption.keyAlgorithm</dt>
 <dd>
 <p>Key encryption algorithm: see RFC7518, Section 4</p>
+</dd>
+<dt class="hdlist1">thorntail.jose.encryption.out.key.alias</dt>
+<dd>
+<p>Key Alias in the keystore to be used for encryption only</p>
 </dd>
 <dt class="hdlist1">thorntail.jose.keystore.password</dt>
 <dd>
@@ -13929,6 +13953,10 @@ according to JSR-3.</p>
 <dd>
 <p>Signature format: COMPACT (default) or JSON (support  is optional)</p>
 </dd>
+<dt class="hdlist1">thorntail.jose.signature.in.key.alias</dt>
+<dd>
+<p>Alias to the signature key entry in the keystore used for verification only</p>
+</dd>
 <dt class="hdlist1">thorntail.jose.signature.key.alias</dt>
 <dd>
 <p>Alias to the signature key entry in the keystore</p>
@@ -13936,6 +13964,10 @@ according to JSR-3.</p>
 <dt class="hdlist1">thorntail.jose.signature.key.password</dt>
 <dd>
 <p>Password to the signature private key</p>
+</dd>
+<dt class="hdlist1">thorntail.jose.signature.out.key.alias</dt>
+<dd>
+<p>Alias to the signature key entry in the keystore used for signing only</p>
 </dd>
 </dl>
 </div>
@@ -22996,7 +23028,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-11-06 08:40:54 MST
+Last updated 2018-11-07 06:42:21 MST
 </div>
 </div>
 </body>
