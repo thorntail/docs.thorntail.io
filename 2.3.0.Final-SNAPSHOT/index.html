@@ -1188,6 +1188,9 @@ For more information, see <a href="https://git-scm.com/docs/gittutorial">Git tut
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
     <span class="tag">&lt;failOnMissingWebXml&gt;</span>false<span class="tag">&lt;/failOnMissingWebXml&gt;</span>
     <span class="tag">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="tag">&lt;/project.build.sourceEncoding&gt;</span>
+
+    <span class="comment">&lt;!-- Specify the JDK builder image used to build your application. --&gt;</span>
+    <span class="tag">&lt;fabric8.generator.from&gt;</span>registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:latest<span class="tag">&lt;/fabric8.generator.from&gt;</span>
   <span class="tag">&lt;/properties&gt;</span>
 
   <span class="tag">&lt;dependencyManagement&gt;</span>
@@ -13794,6 +13797,14 @@ according to JSR-3.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
+<dt class="hdlist1">swarm.jose.accept-decryption-alias</dt>
+<dd>
+<p>Accept key alias for decryption (defaults to false).</p>
+</dd>
+<dt class="hdlist1">swarm.jose.accept-signature-alias</dt>
+<dd>
+<p>Accept signature alias for verification (defaults to false).</p>
+</dd>
 <dt class="hdlist1">swarm.jose.content-encryption-algorithm</dt>
 <dd>
 <p>Content encryption algorithm: : see RFC7518, Section 5</p>
@@ -13821,6 +13832,10 @@ according to JSR-3.</p>
 <dt class="hdlist1">swarm.jose.include-encryption-key-alias</dt>
 <dd>
 <p>Include the encryption key alias as the JOSE 'kid' header (defaults to true)</p>
+</dd>
+<dt class="hdlist1">swarm.jose.include-signature-key-alias</dt>
+<dd>
+<p>Include the signature key alias as the JOSE 'kid' header (defaults to true)</p>
 </dd>
 <dt class="hdlist1">swarm.jose.key-encryption-algorithm</dt>
 <dd>
@@ -13870,6 +13885,10 @@ according to JSR-3.</p>
 <dd>
 <p>Password to the signature private key</p>
 </dd>
+<dt class="hdlist1">thorntail.jose.encryption.accept.alias</dt>
+<dd>
+<p>Accept key alias for decryption (defaults to false).</p>
+</dd>
 <dt class="hdlist1">thorntail.jose.encryption.contentAlgorithm</dt>
 <dd>
 <p>Content encryption algorithm: : see RFC7518, Section 5</p>
@@ -13914,6 +13933,10 @@ according to JSR-3.</p>
 <dd>
 <p>Keystore type: Java KeyStore type or 'jwk' - JSON Web Key store, see RFC7517, section 5</p>
 </dd>
+<dt class="hdlist1">thorntail.jose.signature.accept.alias</dt>
+<dd>
+<p>Accept signature alias for verification (defaults to false).</p>
+</dd>
 <dt class="hdlist1">thorntail.jose.signature.algorithm</dt>
 <dd>
 <p>Signature algorithm: see RFC7518, Section 3</p>
@@ -13933,6 +13956,10 @@ according to JSR-3.</p>
 <dt class="hdlist1">thorntail.jose.signature.in.key.alias</dt>
 <dd>
 <p>Alias to the signature key entry in the keystore used for verification only</p>
+</dd>
+<dt class="hdlist1">thorntail.jose.signature.include.alias</dt>
+<dd>
+<p>Include the signature key alias as the JOSE 'kid' header (defaults to true)</p>
 </dd>
 <dt class="hdlist1">thorntail.jose.signature.key.alias</dt>
 <dd>
@@ -22395,7 +22422,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-11-22 12:08:30 MST
+Last updated 2018-11-26 04:45:50 MST
 </div>
 </div>
 </body>
