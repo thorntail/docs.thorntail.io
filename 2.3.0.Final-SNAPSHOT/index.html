@@ -6095,7 +6095,7 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dd>
 <dt class="hdlist1">thorntail.ee.managed-scheduled-executor-services.<em>KEY</em>.core-threads</dt>
 <dd>
-<p>The minimum number of threads to be used by the scheduled executor.</p>
+<p>The number of threads to be used by the scheduled executor, even if they are idle. If this is not defined or is set to 0, the core pool size will be calculated based on the number of available processors.</p>
 </dd>
 <dt class="hdlist1">thorntail.ee.managed-scheduled-executor-services.<em>KEY</em>.hung-task-threshold</dt>
 <dd>
@@ -6668,7 +6668,7 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 </dd>
 <dt class="hdlist1">thorntail.elytron.certificate-authority-accounts.<em>KEY</em>.certificate-authority</dt>
 <dd>
-<p>The name of the certificate authority to use. Allowed values: "LetsEncrypt"</p>
+<p>The name of the certificate authority to use. Allowed values: 'LetsEncrypt'</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.certificate-authority-accounts.<em>KEY</em>.contact-urls</dt>
 <dd>
@@ -7002,13 +7002,17 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dd>
 <p>The default authentication context to be associated with all deployments.</p>
 </dd>
+<dt class="hdlist1">thorntail.elytron.default-ssl-context</dt>
+<dd>
+<p>Reference to the SSLContext which should be globally registered as the default.</p>
+</dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.authentication-context</dt>
 <dd>
-<p>The authentication context to obtain login credentials to connect to the LDAP server. Can be omitted if authentication-level is "none" (anonymous).</p>
+<p>The authentication context to obtain login credentials to connect to the LDAP server. Can be omitted if authentication-level is 'none' (anonymous).</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.authentication-level</dt>
 <dd>
-<p>The authentication level (security level/authentication mechanism) to use. Corresponds to SECURITY_AUTHENTICATION ("java.naming.security.authentication") environment property. Allowed values: "none", "simple", sasl_mech, where sasl_mech is a space-separated list of SASL mechanism names.</p>
+<p>The authentication level (security level/authentication mechanism) to use. Corresponds to SECURITY_AUTHENTICATION ('java.naming.security.authentication') environment property. Allowed values: 'none', 'simple', sasl_mech, where sasl_mech is a space-separated list of SASL mechanism names.</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.connection-timeout</dt>
 <dd>
@@ -7016,7 +7020,7 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.credential-reference</dt>
 <dd>
-<p>The credential reference to authenticate and connect to the LDAP server. Can be omitted if authentication-level is "none" (anonymous).</p>
+<p>The credential reference to authenticate and connect to the LDAP server. Can be omitted if authentication-level is 'none' (anonymous).</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.enable-connection-pooling</dt>
 <dd>
@@ -7028,7 +7032,7 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.principal</dt>
 <dd>
-<p>The principal to authenticate and connect to the LDAP server. Can be omitted if authentication-level is "none" (anonymous).</p>
+<p>The principal to authenticate and connect to the LDAP server. Can be omitted if authentication-level is 'none' (anonymous).</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.dir-contexts.<em>KEY</em>.properties</dt>
 <dd>
@@ -7057,6 +7061,10 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dt class="hdlist1">thorntail.elytron.file-audit-logs.<em>KEY</em>.attribute-synchronized</dt>
 <dd>
 <p>Whether every event should be immediately synchronised to disk.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.file-audit-logs.<em>KEY</em>.autoflush</dt>
+<dd>
+<p>Whether every event should be immediately flushed to disk (If undefined will default to the value of synchronized).</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.file-audit-logs.<em>KEY</em>.format</dt>
 <dd>
@@ -7133,6 +7141,22 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dt class="hdlist1">thorntail.elytron.initial-providers</dt>
 <dd>
 <p>Reference to the Providers that should be registered ahead of all existing Providers.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.jaspi-configurations.<em>KEY</em>.application-context</dt>
+<dd>
+<p>The application-context this configuration is to be associated with or '*' for all application contexts.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.jaspi-configurations.<em>KEY</em>.description</dt>
+<dd>
+<p>Description of this configuration.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.jaspi-configurations.<em>KEY</em>.layer</dt>
+<dd>
+<p>The layer this configuration is to be associated with or '*' for all layers.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.jaspi-configurations.<em>KEY</em>.server-auth-modules</dt>
+<dd>
+<p>List of ServerAuthModule definitions for this configuration.</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.jdbc-realms.<em>KEY</em>.principal-query</dt>
 <dd>
@@ -7426,6 +7450,10 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dd>
 <p>Whether every event should be immediately synchronised to disk.</p>
 </dd>
+<dt class="hdlist1">thorntail.elytron.periodic-rotating-file-audit-logs.<em>KEY</em>.autoflush</dt>
+<dd>
+<p>Whether every event should be immediately flushed to disk (If undefined will default to the value of synchronized).</p>
+</dd>
 <dt class="hdlist1">thorntail.elytron.periodic-rotating-file-audit-logs.<em>KEY</em>.format</dt>
 <dd>
 <p>The format to use to record the audit event.</p>
@@ -7533,6 +7561,10 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dt class="hdlist1">thorntail.elytron.regex-validating-principal-transformers.<em>KEY</em>.pattern</dt>
 <dd>
 <p>The regular expression to use for the principal transformer.</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.register-jaspi-factory</dt>
+<dd>
+<p>Should the Elytron JASPI factory be globally registered?</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.sasl-authentication-factories.<em>KEY</em>.available-mechanisms</dt>
 <dd>
@@ -7730,6 +7762,14 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <dd>
 <p>Should the SSLEngine, SSLSocket, and SSLServerSocket instances returned be wrapped to protect against further modification.</p>
 </dd>
+<dt class="hdlist1">thorntail.elytron.server-ssl-sni-contexts.<em>KEY</em>.default-ssl-context</dt>
+<dd>
+<p>The context to use if no SNI information is present, or if it does not match any mappings</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.server-ssl-sni-contexts.<em>KEY</em>.host-context-map</dt>
+<dd>
+<p>A mapping between a server name and an SSContext</p>
+</dd>
 <dt class="hdlist1">thorntail.elytron.service-loader-http-server-mechanism-factories.<em>KEY</em>.available-mechanisms</dt>
 <dd>
 <p>The HTTP mechanisms available from this factory instance.</p>
@@ -7768,7 +7808,11 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 </dd>
 <dt class="hdlist1">thorntail.elytron.size-rotating-file-audit-logs.<em>KEY</em>.attribute-synchronized</dt>
 <dd>
-<p>Whether every event should be immediately synchronised to disk.</p>
+<p>Whether every event should be immediately flushed to disk (If undefined will default to the value of synchronized).</p>
+</dd>
+<dt class="hdlist1">thorntail.elytron.size-rotating-file-audit-logs.<em>KEY</em>.autoflush</dt>
+<dd>
+<p>Whether every event should be immediately flushed to disk.</p>
 </dd>
 <dt class="hdlist1">thorntail.elytron.size-rotating-file-audit-logs.<em>KEY</em>.format</dt>
 <dd>
@@ -19383,7 +19427,7 @@ The <code>org.eclipse.microprofile.faulttolerance.Asynchronous</code> annotation
 </dd>
 <dt class="hdlist1">thorntail.modcluster.proxies.<em>KEY</em>.dynamic-load-provider.custom-load-metrics.<em>KEY</em>.module</dt>
 <dd>
-<p>Module name to load the load metric class from.</p>
+<p>Module name from which to load the load metric class.</p>
 </dd>
 <dt class="hdlist1">thorntail.modcluster.proxies.<em>KEY</em>.dynamic-load-provider.custom-load-metrics.<em>KEY</em>.property</dt>
 <dd>
@@ -21377,9 +21421,17 @@ and JSR-52.</p>
 <dd>
 <p>Enable authorization using JACC</p>
 </dd>
+<dt class="hdlist1">thorntail.undertow.application-security-domains.<em>KEY</em>.enable-jaspi</dt>
+<dd>
+<p>Enable JASPI authentication for the associated deployments.</p>
+</dd>
 <dt class="hdlist1">thorntail.undertow.application-security-domains.<em>KEY</em>.http-authentication-factory</dt>
 <dd>
 <p>The HTTP Authentication Factory to be used by deployments that reference the mapped security domain.</p>
+</dd>
+<dt class="hdlist1">thorntail.undertow.application-security-domains.<em>KEY</em>.integrated-jaspi</dt>
+<dd>
+<p>Should integrated JASPI be used or allow AsHoc identity creation.</p>
 </dd>
 <dt class="hdlist1">thorntail.undertow.application-security-domains.<em>KEY</em>.override-deployment-config</dt>
 <dd>
@@ -22971,7 +23023,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2019-01-04 12:59:48 MST
+Last updated 2019-01-04 22:51:50 MST
 </div>
 </div>
 </body>
