@@ -690,7 +690,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#configuring-a-thorntail-application_thorntail">5.2. Configuring a Thorntail application</a>
 <ul class="sectlevel3">
 <li><a href="#configuring-a-thorntail-application-using-system-properties_thorntail">5.2.1. System properties</a></li>
-<li><a href="#configuring-a-thorntail-application-using-yaml-files_thorntail">5.2.2. YAML files</a></li>
+<li><a href="#configuring-a-thorntail-application-using-environment-variables_thorntail">5.2.2. Environment Variables</a></li>
+<li><a href="#configuring-a-thorntail-application-using-yaml-files_thorntail">5.2.3. YAML files</a></li>
 </ul>
 </li>
 <li><a href="#prebuilt-servers_thorntail">5.3. Pre-built servers</a>
@@ -4521,7 +4522,145 @@ The specified JAR files are added to the classpath of the application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-a-thorntail-application-using-yaml-files_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-yaml-files_thorntail"></a>5.2.2. YAML files</h4>
+<h4 id="configuring-a-thorntail-application-using-environment-variables_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-environment-variables_thorntail"></a>5.2.2. Environment Variables</h4>
+<div class="paragraph">
+<p>Use environment variables to configure your application or override values stored in YAML files.
+This approach is useful when deploying to environments like Docker, Kubernetes, or OpenShift.</p>
+</div>
+<div class="sect4">
+<h5 id="application-configuration-using-environment-variables_thorntail"><a class="anchor" href="#application-configuration-using-environment-variables_thorntail"></a>Application configuration using environment variables</h5>
+<div class="paragraph">
+<p>Use environment variables to configure your application in various deployments&#8212;&#8203;especially in a containerized environment, such as Docker.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Environment variables configuration</div>
+<div class="content">
+<div class="paragraph">
+<p>A property documented as <code>thorntail.undertow.servers.KEY.default-host</code> translates to the following environment variable (substituting the <code>KEY</code> segment with the <code>default</code> identifier):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">export THORNTAIL.UNDERTOW.SERVERS.DEFAULT.DEFAULT_DASH_HOST=&lt;myhost&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike other configuration options, properties defined as environment variables in Linux-based containers do not allow defining non-alphanumeric characters like <em>dot</em> (.), <em>dash/hyphen</em> (-) or any other characters not in the <code>[A-Za-z0-9_]</code> range.
+Many configuration properties in Thorntail contain these characters, so you must follow these rules when defining the environment variables in the following environments:</p>
+</div>
+<div class="ulist">
+<div class="title">Linux-based container rules</div>
+<ul>
+<li>
+<p>It is a naming convention that all environment properties are defined using uppercase letters.
+For example, define the <code>serveraddress</code> property as <code>SERVERADDRESS</code>.</p>
+</li>
+<li>
+<p>All the <em>dot</em> (.) characters must be replaced with <em>underscore</em> (_).
+For example, define the <code>thorntail.bind.address=127.0.0.1</code> property as <code>THORNTAIL_BIND_ADDRESS=127.0.0.1</code>.</p>
+</li>
+<li>
+<p>All <em>dash/hyphen</em> (-) characters must be replaced with the <code><em>DASH</em></code> string.
+For example, define the <code>thorntail.data-sources.foo.url=&lt;url&gt;</code> property as <code>THORNTAIL_DATA_DASH_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
+</li>
+<li>
+<p>If the property name contains underscores, all <em>underscore</em> (_) characters must be replaced with the <code>_UNDERSCORE_</code> string.
+For example, define the <code>thorntail.data_sources.foo.url=&lt;url&gt;</code> property as <code>THORNTAIL_DATA_UNDERSCORE_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. An example data source configuration</div>
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dthorntail.datasources.data-sources.devwf.connection-url=
+jdbc:postgresql://localhost:5432/sampledb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>THORNTAIL_DATASOURCES_DATA_DASH_SOURCES_DEVWF_CONNECTION_DASH_URL=
+'jdbc:postgresql://localhost:5432/sampledb'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dthorntail.datasources.data-sources.devwf.driver-name=postgresql</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>THORNTAIL_DATASOURCES_DATA_DASH_SOURCES_DEVWF_DRIVER_DASH_NAME='postgresql'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dthorntail.datasources.data-sources.devwf.jndiname=java:/jboss/datasources/devwf</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>THORNTAIL_DATASOURCES_DATA_DASH_SOURCES_DEVWF_JNDI_DASH_NAME='java:/jboss/datasources/devwf'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dthorntail.datasources.data-sources.devwf.user-name=postgres</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>THORNTAIL_DATASOURCES_DATA_DASH_SOURCES_DEVWF_USER_DASH_NAME='postgres'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dthorntail.datasources.data-sources.devwf.password=admin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>THORNTAIL_DATASOURCES_DATA_DASH_SOURCES_DEVWF_PASSWORD='admin'</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-a-thorntail-application-using-yaml-files_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-yaml-files_thorntail"></a>5.2.3. YAML files</h4>
 <div class="paragraph">
 <p>YAML is the preferred method for long-term configuration of your application.
 In addition to that, the YAML strategy provides grouping of environment-specific configurations, which you can selectively enable when executing the application.</p>
@@ -4532,7 +4671,7 @@ In addition to that, the YAML strategy provides grouping of environment-specific
 <p>The Thorntail configuration item names correspond to the YAML configuration structure.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 1. YAML configuration</div>
+<div class="title">Example 3. YAML configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>For example, a configuration item documented as <code>thorntail.undertow.servers.KEY.default-host</code> translates to the following YAML structure, substituting the <code>KEY</code> segment with the <code>default</code> identifier:</p>
@@ -4565,7 +4704,7 @@ The specified files are loaded, in the order you provided them, before <code>pro
 A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code>project-&lt;name&gt;.yml</code> file on your classpath.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Specifying configuration files on the command line</div>
+<div class="title">Example 4. Specifying configuration files on the command line</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -4603,7 +4742,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <p>Both the <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> command-line options can be used at the same time, but files specified using the <code>-s &lt;path&gt;</code> option take precedence over YAML files contained in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 3. Specifying configuration files inside and outside of the application</div>
+<div class="title">Example 5. Specifying configuration files inside and outside of the application</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -4720,7 +4859,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Additional interface configuration</div>
+<div class="title">Example 6. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -4766,7 +4905,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Socket-binding group</div>
+<div class="title">Example 7. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -4784,7 +4923,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Socket binding</div>
+<div class="title">Example 8. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -4802,7 +4941,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Outbound socket binding</div>
+<div class="title">Example 9. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -23023,7 +23162,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2019-01-07 07:46:06 MST
+Last updated 2019-01-08 06:22:22 MST
 </div>
 </div>
 </body>
