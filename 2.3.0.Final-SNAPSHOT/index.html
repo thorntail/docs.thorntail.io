@@ -636,7 +636,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-a-datasource_thorntail">3.7. Creating a datasource</a>
 <ul class="sectlevel3">
 <li><a href="#_configuring_a_jdbc_driver">3.7.1. Configuring a JDBC driver</a></li>
-<li><a href="#configuring-a-datasource_thorntail">3.7.2. Configuring a datasource</a></li>
+<li><a href="#_configuring_a_datasource">3.7.2. Configuring a Datasource</a></li>
 <li><a href="#_example_full_project_defaults_yml_file">3.7.3. Example full project-defaults.yml file</a></li>
 </ul>
 </li>
@@ -1771,7 +1771,7 @@ a pool of connections to a particular database using the driver.</p>
 <div class="sect3">
 <h4 id="_configuring_a_jdbc_driver"><a class="anchor" href="#_configuring_a_jdbc_driver"></a>3.7.1. Configuring a JDBC driver</h4>
 <div class="paragraph">
-<p>There are two options how to configure JDBC drivers:</p>
+<p>There are the following options how to configure JDBC drivers:</p>
 </div>
 <div class="sect4">
 <h5 id="auto-detecting-jdbc-drivers_thorntail"><a class="anchor" href="#auto-detecting-jdbc-drivers_thorntail"></a>Auto-detecting JDBC drivers</h5>
@@ -1890,7 +1890,7 @@ scope) to your application:</p>
 <p>A Maven-based application.</p>
 </li>
 <li>
-<p>The <code>module.xml</code> file created according to relevant WildFly instructions.
+<p>The <code>module.xml</code> file created in the <code>src/main/resources/modules</code> directory according to relevant WildFly instructions.
 This file is necessary to expose the driver through JBoss Modules.</p>
 </li>
 </ul>
@@ -1915,7 +1915,8 @@ This file is necessary to expose the driver through JBoss Modules.</p>
 <p>Edit the <code>project-defaults.yml</code> file to define the driver information.</p>
 <div class="paragraph">
 <p>In the <code>thorntail</code> &#8594; <code>datasources</code> &#8594; <code>jdbc-drivers</code> tree, define the driver by
-key, which will be used later for connecting it to the datasource.</p>
+key, which will be used later for connecting it to the datasource.
+Set the <code>driver-module-name</code> to that defined in the <code>module.xml</code> file.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1934,8 +1935,49 @@ key, which will be used later for connecting it to the datasource.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-a-datasource_thorntail"><a class="anchor" href="#configuring-a-datasource_thorntail"></a>3.7.2. Configuring a datasource</h4>
-<h5 id="_prerequisites_7" class="discrete">Prerequisites</h5>
+<h4 id="_configuring_a_datasource"><a class="anchor" href="#_configuring_a_datasource"></a>3.7.2. Configuring a Datasource</h4>
+<div class="paragraph">
+<p>There are the following options for how to configure a datasource:</p>
+</div>
+<div class="sect4">
+<h5 id="using-default-datasource_thorntail"><a class="anchor" href="#using-default-datasource_thorntail"></a>Using the default datasource</h5>
+<div class="paragraph">
+<p>The presence of a JDBC driver will automatically create a datasource with the name <code>ExampleDS</code>.</p>
+</div>
+<h6 id="_prerequisites_7" class="discrete">Prerequisites</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>A Maven-based application.</p>
+</li>
+<li>
+<p>A JDBC Driver configured manually or auto-detected.</p>
+</li>
+</ul>
+</div>
+<h6 id="_procedure_7" class="discrete">Procedure</h6>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the <code>project-defaults.yml</code> file to customize the datasource name.</p>
+<div class="paragraph">
+<p>The configuration is stored under <code>thorntail</code>
+&#8594; <code>ds</code> &#8594; <code>name</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">thorntail</span>:
+  <span class="key">ds</span>:
+    <span class="key">name</span>: <span class="string"><span class="content">myDS</span></span></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="configuring-a-datasource_manually_thorntail"><a class="anchor" href="#configuring-a-datasource_manually_thorntail"></a>Configuring a datasource manually</h5>
+<h6 id="_prerequisites_8" class="discrete">Prerequisites</h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1946,7 +1988,7 @@ key, which will be used later for connecting it to the datasource.</p>
 </li>
 </ul>
 </div>
-<h5 id="_procedure_7" class="discrete">Procedure</h5>
+<h6 id="_procedure_8" class="discrete">Procedure</h6>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1967,6 +2009,7 @@ using the JDBC driver of your choice. The configuration is stored under <code>th
 </div>
 </li>
 </ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -2002,7 +2045,7 @@ running application. This allows you to verify your application is behaving
 correctly. There is an adapter for Thorntail that makes Arquillian-based
 testing work well with Thorntail&#x2013;based applications.</p>
 </div>
-<h4 id="_prerequisites_8" class="discrete">Prerequisites</h4>
+<h4 id="_prerequisites_9" class="discrete">Prerequisites</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2010,7 +2053,7 @@ testing work well with Thorntail&#x2013;based applications.</p>
 </li>
 </ul>
 </div>
-<h4 id="_procedure_8" class="discrete">Procedure</h4>
+<h4 id="_procedure_9" class="discrete">Procedure</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2270,7 +2313,7 @@ Typically, deployments use rotating logs to save disk space.</p>
 <p>In Thorntail, logging is configured using system properties.
 Even though it is possible to use the <code>-Dproperty=value</code> syntax when launching your application, it is strongly recommended to configure file logging using the YAML profile files.</p>
 </div>
-<h5 id="_prerequisites_9" class="discrete">Prerequisites</h5>
+<h5 id="_prerequisites_10" class="discrete">Prerequisites</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2281,7 +2324,7 @@ Even though it is possible to use the <code>-Dproperty=value</code> syntax when 
 </li>
 </ul>
 </div>
-<h5 id="_procedure_9" class="discrete">Procedure</h5>
+<h5 id="_procedure_10" class="discrete">Procedure</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4396,7 +4439,7 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 <div class="paragraph">
 <p>If you want to set explicit configuration values as defaults through the Maven plugin, add a <code>&lt;properties&gt;</code> section to the <code>&lt;configuration&gt;</code> block of the plugin in the <code>pom.xml</code> file in your application.</p>
 </div>
-<h6 id="_prerequisites_10" class="discrete">Prerequisites</h6>
+<h6 id="_prerequisites_11" class="discrete">Prerequisites</h6>
 <div class="ulist">
 <ul>
 <li>
@@ -4404,7 +4447,7 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 </li>
 </ul>
 </div>
-<h6 id="_procedure_10" class="discrete">Procedure</h6>
+<h6 id="_procedure_11" class="discrete">Procedure</h6>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4453,7 +4496,7 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 <div class="paragraph">
 <p>To use a property on the command line, pass it as a command-line parameter to the Java binary:</p>
 </div>
-<h6 id="_prerequisites_11" class="discrete">Prerequisites</h6>
+<h6 id="_prerequisites_12" class="discrete">Prerequisites</h6>
 <div class="ulist">
 <ul>
 <li>
@@ -4461,7 +4504,7 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 </li>
 </ul>
 </div>
-<h6 id="_procedure_11" class="discrete">Procedure</h6>
+<h6 id="_procedure_12" class="discrete">Procedure</h6>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4495,7 +4538,7 @@ This way, you do not need to package the driver in the hollow JAR.</p>
 <p>The <code>thorntail.classpath</code> property accepts one or more paths to JAR files separated by <code>;</code> (a semicolon).
 The specified JAR files are added to the classpath of the application.</p>
 </div>
-<h6 id="_prerequisites_12" class="discrete">Prerequisites</h6>
+<h6 id="_prerequisites_13" class="discrete">Prerequisites</h6>
 <div class="ulist">
 <ul>
 <li>
@@ -4503,7 +4546,7 @@ The specified JAR files are added to the classpath of the application.</p>
 </li>
 </ul>
 </div>
-<h6 id="_procedure_12" class="discrete">Procedure</h6>
+<h6 id="_procedure_13" class="discrete">Procedure</h6>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -23162,7 +23205,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2019-01-14 07:09:19 MST
+Last updated 2019-01-14 15:55:25 MST
 </div>
 </div>
 </body>
