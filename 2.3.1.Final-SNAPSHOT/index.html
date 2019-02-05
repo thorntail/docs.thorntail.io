@@ -3731,6 +3731,53 @@ If set, the thorntail process will suspend on start and open a debugger on this 
 </tbody>
 </table>
 </dd>
+<dt class="hdlist1">filterWebInfLib</dt>
+<dd>
+<p>If true, the plugin will remove artifacts from the project WAR&#8217;s <code>WEB-INF/lib</code> directory that are provided by the Thorntail runtime.
+Otherwise, the contents of <code>WEB-INF/lib</code> will remain untouched.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Property</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>thorntail.filterWebInfLib</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>true</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used by</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This option should generally not be necessary and is provided as a workaround in case the Thorntail plugin removes a dependency required by the application. When false, it is the developer&#8217;s responsibility to ensure that the <code>WEB-INF/lib</code> directory does not contain Thorntail artifacts that would comprimise the functionality of the application. One way to do that is to avoid expressing dependencies on fractions and rely on <a href="#auto-detecting-fractions_thorntail">auto-detection</a> and/or explicitly listing them with the <strong>fractions</strong> option detailed below.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">fractionDetectMode</dt>
 <dd>
 <div class="openblock">
@@ -23205,7 +23252,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.1.Final-SNAPSHOT<br>
-Last updated 2019-01-16 03:38:52 MST
+Last updated 2019-02-05 04:14:37 MST
 </div>
 </div>
 </body>
