@@ -19355,7 +19355,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <dl>
 <dt class="hdlist1">thorntail.microprofile.fault-tolerance.synchronous-circuit-breaker</dt>
 <dd>
-<p>Enable/disable synchronous circuit breaker functionality. If disabled, <code>CircuitBreaker#successThreshold()</code> of value greater than 1 is not supported. Moreover, circuit breaker does not necessarily transition from <code>CLOSED</code> to <code>OPEN</code> immediately when a fault tolerance operation completes. However, applications are encouraged to disable this feature on high-volume circuits.</p>
+<p>Enable/disable synchronous circuit breaker functionality. If disabled, <code>CircuitBreaker#successThreshold()</code> of value greater than 1 is not supported and <code>CircuitBreaker#failOn()</code> configuration is ignored. Moreover, circuit breaker does not necessarily transition from <code>CLOSED</code> to <code>OPEN</code> immediately when a fault tolerance operation completes. However, applications are encouraged to disable this feature on high-volume circuits.</p>
 </dd>
 </dl>
 </div>
@@ -23257,7 +23257,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.1.Final-SNAPSHOT<br>
-Last updated 2019-03-07 05:29:12 MST
+Last updated 2019-03-07 11:02:18 MST
 </div>
 </div>
 </body>
