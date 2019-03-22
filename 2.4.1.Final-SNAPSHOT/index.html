@@ -1930,9 +1930,8 @@ Set the <code>driver-module-name</code> to that defined in the <code>module.xml<
   <span class="key">datasources</span>:
     <span class="key">jdbc-drivers</span>:
       <span class="key">myh2</span>:
-        <span class="key">driver-class-name</span>: <span class="string"><span class="content">org.h2.Driver</span></span>
-        <span class="key">xa-datasource-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span>
-        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span></code></pre>
+        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span>
+        <span class="key">driver-xa-datasource-class-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span></code></pre>
 </div>
 </div>
 </li>
@@ -2036,9 +2035,8 @@ database.</p>
         <span class="key">password</span>: <span class="string"><span class="content">sa</span></span>
     <span class="key">jdbc-drivers</span>:
       <span class="key">myh2</span>:
-        <span class="key">driver-class-name</span>: <span class="string"><span class="content">org.h2.Driver</span></span>
-        <span class="key">xa-datasource-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span>
-        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span></code></pre>
+        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span>
+        <span class="key">driver-xa-datasource-class-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -2113,9 +2111,8 @@ with the <code>&lt;scope&gt;</code> set to <code>test</code>:</p>
         <span class="key">password</span>: <span class="string"><span class="content">sa</span></span>
     <span class="key">jdbc-drivers</span>:
       <span class="key">myh2</span>:
-        <span class="key">driver-class-name</span>: <span class="string"><span class="content">org.h2.Driver</span></span>
-        <span class="key">xa-datasource-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span>
-        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span></code></pre>
+        <span class="key">driver-module-name</span>: <span class="string"><span class="content">com.h2database.h2</span></span>
+        <span class="key">driver-xa-datasource-class-name</span>: <span class="string"><span class="content">org.h2.jdbcx.JdbcDataSource</span></span></code></pre>
 </div>
 </div>
 </li>
@@ -5156,39 +5153,39 @@ through JSR-352.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">thorntail.batch.default-job-repository</dt>
+<dt class="hdlist1">thorntail.batch-jberet.default-job-repository</dt>
 <dd>
 <p>The name of the default job repository.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.default-thread-pool</dt>
+<dt class="hdlist1">thorntail.batch-jberet.default-thread-pool</dt>
 <dd>
 <p>The name of the default thread-pool.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.jdbc-job-repositories.<em>KEY</em>.data-source</dt>
+<dt class="hdlist1">thorntail.batch-jberet.jdbc-job-repositories.<em>KEY</em>.data-source</dt>
 <dd>
 <p>The data source name used to connect to the database.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.restart-jobs-on-resume</dt>
+<dt class="hdlist1">thorntail.batch-jberet.restart-jobs-on-resume</dt>
 <dd>
 <p>If set to true when a resume operation has be invoked after a suspend operation any jobs stopped during the suspend will be restarted. A value of false will leave the jobs in a stopped state.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.security-domain</dt>
+<dt class="hdlist1">thorntail.batch-jberet.security-domain</dt>
 <dd>
 <p>References the security domain for batch jobs. This can only be defined if the Elytron subsystem is available.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-factories.<em>KEY</em>.group-name</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-factories.<em>KEY</em>.group-name</dt>
 <dd>
 <p>Specifies the name of a  thread group to create for this thread factory.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-factories.<em>KEY</em>.name</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-factories.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the created thread factory.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-factories.<em>KEY</em>.priority</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-factories.<em>KEY</em>.priority</dt>
 <dd>
 <p>May be used to specify the thread priority of created threads.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-factories.<em>KEY</em>.thread-name-pattern</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-factories.<em>KEY</em>.thread-name-pattern</dt>
 <dd>
 <p>The template used to create names for threads.  The following patterns may be used:
 	%% - emit a percent sign
@@ -5197,47 +5194,47 @@ through JSR-352.</p>
 	%f - emit the factory sequence number
 	%i - emit the thread ID.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.active-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.active-count</dt>
 <dd>
 <p>The approximate number of threads that are actively executing tasks.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.completed-task-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.completed-task-count</dt>
 <dd>
 <p>The approximate total number of tasks that have completed execution.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.current-thread-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.current-thread-count</dt>
 <dd>
 <p>The current number of threads in the pool.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of time that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.largest-thread-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.largest-thread-count</dt>
 <dd>
 <p>The largest number of threads that have ever simultaneously been in the pool.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum thread pool size. Note this should always be greater than 3. Two threads are reserved to ensure partition jobs can execute as expected.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.name</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the thread pool.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.queue-size</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.queue-size</dt>
 <dd>
 <p>The queue size.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.rejected-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.rejected-count</dt>
 <dd>
 <p>The number of tasks that have been rejected.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.task-count</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.task-count</dt>
 <dd>
 <p>The approximate total number of tasks that have ever been scheduled for execution.</p>
 </dd>
-<dt class="hdlist1">thorntail.batch.thread-pools.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">thorntail.batch-jberet.thread-pools.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>Specifies the name of a specific thread factory to use to create worker threads. If not defined an appropriate default thread factory will be used.</p>
 </dd>
@@ -23279,7 +23276,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-03-20 14:57:58 MST
+Last updated 2019-03-22 11:09:41 MST
 </div>
 </div>
 </body>
