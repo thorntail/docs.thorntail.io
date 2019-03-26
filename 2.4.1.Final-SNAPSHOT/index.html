@@ -2298,7 +2298,7 @@ Verify it contains the following coordinates. If it does not, add them.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://wildfly-swarm.github.io/wildfly-swarm-javadocs/2.4.1.Final-SNAPSHOT/apidocs/org/wildfly/swarm/config/logging/Level.html"><code>org.wildfly.swarm.config.logging.Level</code></a> class for the list of available levels.</p>
+<p>See the <a href="https://thorntail.github.io/javadocs/2.4.1.Final-SNAPSHOT/apidocs/org/wildfly/swarm/config/logging/Level.html"><code>org.wildfly.swarm.config.logging.Level</code></a> class for the list of available levels.</p>
 </div>
 </div>
 </div>
@@ -4242,7 +4242,7 @@ Only the items related to the fractions that your application uses are relevant 
 <div class="dlist">
 <div class="title">General system properties</div>
 <dl>
-<dt class="hdlist1">swarm.bind.address</dt>
+<dt class="hdlist1">thorntail.bind.address</dt>
 <dd>
 <p>The interface to bind servers</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4260,7 +4260,7 @@ Only the items related to the fractions that your application uses are relevant 
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.port.offset</dt>
+<dt class="hdlist1">thorntail.port.offset</dt>
 <dd>
 <p>The global port adjustment</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4278,7 +4278,7 @@ Only the items related to the fractions that your application uses are relevant 
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.context.path</dt>
+<dt class="hdlist1">thorntail.context.path</dt>
 <dd>
 <p>The context path for the deployed application</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4296,7 +4296,7 @@ Only the items related to the fractions that your application uses are relevant 
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.http.port</dt>
+<dt class="hdlist1">thorntail.http.port</dt>
 <dd>
 <p>The port for the HTTP server</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4314,7 +4314,7 @@ Only the items related to the fractions that your application uses are relevant 
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.https.port</dt>
+<dt class="hdlist1">thorntail.https.port</dt>
 <dd>
 <p>The port for the HTTPS server</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4332,13 +4332,13 @@ Only the items related to the fractions that your application uses are relevant 
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.debug.port</dt>
+<dt class="hdlist1">thorntail.debug.port</dt>
 <dd>
-<p>If provided, the swarm process will pause for debugging on the given port.</p>
+<p>If provided, the Thorntail process will pause for debugging on the given port.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>This option is only available when running an Arquillian test or starting the application using the <code>mvn wildfly-swarm:run</code> command, not when executing a JAR file.
+<p>This option is only available when running an Arquillian test or starting the application using the <code>mvn thorntail:run</code> command, not when executing a JAR file.
 The JAR file execution requires normal Java debug agent parameters.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -4359,12 +4359,12 @@ The JAR file execution requires normal Java debug agent parameters.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>With the H2, MySQL, and Postgres database fractions,  use the following properties to configure the datasource:</p>
+<div class="title">Datasource-related system properties</div>
+<p>With JDBC driver autodetection, use the following properties to configure the datasource:</p>
 </div>
 <div class="dlist">
-<div class="title">Datasource-related system properties</div>
 <dl>
-<dt class="hdlist1">swarm.ds.name</dt>
+<dt class="hdlist1">thorntail.ds.name</dt>
 <dd>
 <p>The name of the datasource</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4382,7 +4382,7 @@ The JAR file execution requires normal Java debug agent parameters.</p>
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.ds.username</dt>
+<dt class="hdlist1">thorntail.ds.username</dt>
 <dd>
 <p>The user name to access the database</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4400,7 +4400,7 @@ The JAR file execution requires normal Java debug agent parameters.</p>
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.ds.password</dt>
+<dt class="hdlist1">thorntail.ds.password</dt>
 <dd>
 <p>The password to access the database</p>
 <table class="tableblock frame-all grid-all stretch">
@@ -4418,9 +4418,9 @@ The JAR file execution requires normal Java debug agent parameters.</p>
 </tbody>
 </table>
 </dd>
-<dt class="hdlist1">swarm.ds.connection.url</dt>
+<dt class="hdlist1">thorntail.ds.connection.url</dt>
 <dd>
-<p>The JDBC Connection URL</p>
+<p>The JDBC connection URL</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -6182,7 +6182,7 @@ may be used when defining a datasource is as follows:</p>
 </dd>
 <dt class="hdlist1">thorntail.ds.password</dt>
 <dd>
-<p>Defatul datasource connection password</p>
+<p>Default datasource connection password</p>
 </dd>
 <dt class="hdlist1">thorntail.ds.username</dt>
 <dd>
@@ -6190,7 +6190,7 @@ may be used when defining a datasource is as follows:</p>
 </dd>
 <dt class="hdlist1">thorntail.jdbc.driver</dt>
 <dd>
-<p>Defatul datasource JDBC driver name</p>
+<p>Default datasource JDBC driver name</p>
 </dd>
 </dl>
 </div>
@@ -14685,7 +14685,7 @@ to JSR-220.</p>
 <div class="paragraph">
 <p>When specifying log-levels through properties, since
 they include dots, they should be placed between
-square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</code>.</p>
+square brackets, such as <code>thorntail.logging.loggers.[com.mycorp.logger].level</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
@@ -23276,7 +23276,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-03-22 14:08:32 MST
+Last updated 2019-03-26 05:53:09 MST
 </div>
 </div>
 </body>
