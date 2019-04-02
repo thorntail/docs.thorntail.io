@@ -19420,6 +19420,18 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <dd>
 <p>If a JAX-RS resource has no class-level security metadata, then if this property is set to <code>true</code> and at least one resource method has security metadata all other resource methods without security metadata have an implicit <code>@DenyAll</code>, otherwise resource methods without security metadata are not secured</p>
 </dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.realm</dt>
+<dd>
+<p>If set, a security domain with this name that supports MicroProfile JWT is automatically created in the security subsystem. The realmName parameter of the @LoginConfig annotation must be set to the same value.</p>
+</dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.roles.file</dt>
+<dd>
+<p>Roles properties file path, ignored if the roles.map property is set</p>
+</dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.roles.map</dt>
+<dd>
+<p>Roles properties map</p>
+</dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.exp-grace-period</dt>
 <dd>
 <p>The JWT token expiration grace period in seconds</p>
@@ -23276,7 +23288,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-03-29 07:55:44 MST
+Last updated 2019-04-02 04:22:24 MST
 </div>
 </div>
 </body>
