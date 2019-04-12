@@ -23171,71 +23171,71 @@ and JSR-52.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">thorntail.web-services.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">thorntail.webservices.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">thorntail.webservices.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">thorntail.webservices.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">thorntail.webservices.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.client-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">thorntail.webservices.client-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Endpoint configuration property value</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">thorntail.webservices.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">thorntail.webservices.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">thorntail.webservices.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">thorntail.webservices.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.endpoint-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">thorntail.webservices.endpoint-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Endpoint configuration property value</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.modify-wsdl-address</dt>
+<dt class="hdlist1">thorntail.webservices.modify-wsdl-address</dt>
 <dd>
 <p>Whether the soap address can be modified.</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.statistics-enabled</dt>
+<dt class="hdlist1">thorntail.webservices.statistics-enabled</dt>
 <dd>
 <p>Whether statistics are to be gathered for endpoints, default value is 'false'.</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.wsdl-host</dt>
+<dt class="hdlist1">thorntail.webservices.wsdl-host</dt>
 <dd>
 <p>The WSDL, that is a required deployment artifact for an endpoint, has a &lt;soap:address&gt; element which points to the location of the endpoint. JBoss supports rewriting of that SOAP address. If the content of &lt;soap:address&gt; is a valid URL, JBossWS will not rewrite it unless 'modify-wsdl-address' is true. If the content of &lt;soap:address&gt; is not a valid URL, JBossWS will rewrite it using the attribute values given below. If 'wsdl-host' is set to 'jbossws.undefined.host', JBossWS uses requesters host when rewriting the &lt;soap:address&gt;</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.wsdl-path-rewrite-rule</dt>
+<dt class="hdlist1">thorntail.webservices.wsdl-path-rewrite-rule</dt>
 <dd>
 <p>This string defines a SED substitution command (e.g., 's/regexp/replacement/g') that JBossWS executes against the path component of each &lt;soap:address&gt; URL published from the server. When wsdl-path-rewrite-rule is not defined, JBossWS retains the original path component of each &lt;soap:address&gt; URL. When 'modify-wsdl-address' is set to "false" this element is ignored.</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.wsdl-port</dt>
+<dt class="hdlist1">thorntail.webservices.wsdl-port</dt>
 <dd>
 <p>The non-secure port that will be used for rewriting the SOAP address. If absent the port will be identified by querying the list of installed connectors.</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.wsdl-secure-port</dt>
+<dt class="hdlist1">thorntail.webservices.wsdl-secure-port</dt>
 <dd>
 <p>The secure port that will be used for rewriting the SOAP address. If absent the port will be identified by querying the list of installed connectors.</p>
 </dd>
-<dt class="hdlist1">thorntail.web-services.wsdl-uri-scheme</dt>
+<dt class="hdlist1">thorntail.webservices.wsdl-uri-scheme</dt>
 <dd>
 <p>The URI scheme to use for rewriting &lt;soap:address&gt; . Valid values are 'http' and 'https'. This configuration overrides scheme computed by processing the endpoint (even if a transport guarantee is specified). The provided values for 'wsdl-port' and 'wsdl-secure-port' (or their default values) are used depending on specified scheme.</p>
 </dd>
@@ -23288,7 +23288,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-04-12 10:19:11 MST
+Last updated 2019-04-12 14:34:21 MST
 </div>
 </div>
 </body>
