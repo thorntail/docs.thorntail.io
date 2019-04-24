@@ -1945,7 +1945,7 @@ Set the <code>driver-module-name</code> to that defined in the <code>module.xml<
 <p>There are the following options for how to configure a datasource:</p>
 </div>
 <div class="sect4">
-<h5 id="using-default-datasource_thorntail"><a class="anchor" href="#using-default-datasource_thorntail"></a>Using the default datasource</h5>
+<h5 id="using-the-default-datasource_thorntail"><a class="anchor" href="#using-the-default-datasource_thorntail"></a>Using the default datasource</h5>
 <div class="paragraph">
 <p>The presence of a JDBC driver will automatically create a datasource with the name <code>ExampleDS</code>.</p>
 </div>
@@ -1981,7 +1981,7 @@ Set the <code>driver-module-name</code> to that defined in the <code>module.xml<
 </div>
 </div>
 <div class="sect4">
-<h5 id="configuring-a-datasource_manually_thorntail"><a class="anchor" href="#configuring-a-datasource_manually_thorntail"></a>Configuring a datasource manually</h5>
+<h5 id="configuring-a-datasource-manually_thorntail"><a class="anchor" href="#configuring-a-datasource-manually_thorntail"></a>Configuring a datasource manually</h5>
 <h6 id="_prerequisites_8" class="discrete">Prerequisites</h6>
 <div class="ulist">
 <ul>
@@ -3620,8 +3620,8 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 <dl>
 <dt class="hdlist1">bundleDependencies</dt>
 <dd>
-<p>If true, dependencies will be included in the <code>-thorntail.jar</code> file.
-Otherwise, they will be resolved from <code>$M2_REPO</code> or the network at runtime.</p>
+<p>If true, dependencies are included in the <code>-thorntail.jar</code> file.
+Otherwise, they are resolved from <code>$M2_REPO</code> or from the network at runtime.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3652,7 +3652,7 @@ Otherwise, they will be resolved from <code>$M2_REPO</code> or the network at ru
 <dt class="hdlist1">debug</dt>
 <dd>
 <p>The port to use for debugging.
-If set, the thorntail process will suspend on start and open a debugger on this port.</p>
+If set, the Thorntail process suspends on start and opens a debugger on this port.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3736,8 +3736,8 @@ If set, the thorntail process will suspend on start and open a debugger on this 
 </dd>
 <dt class="hdlist1">filterWebInfLib</dt>
 <dd>
-<p>If true, the plugin will remove artifacts from the project WAR&#8217;s <code>WEB-INF/lib</code> directory that are provided by the Thorntail runtime.
-Otherwise, the contents of <code>WEB-INF/lib</code> will remain untouched.</p>
+<p>If true, the plugin removes artifacts that are provided by the Thorntail runtime from the <code>WEB-INF/lib</code> directory of the project WAR file.
+Otherwise, the contents of <code>WEB-INF/lib</code> remain untouched.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3774,7 +3774,11 @@ Otherwise, the contents of <code>WEB-INF/lib</code> will remain untouched.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-This option should generally not be necessary and is provided as a workaround in case the Thorntail plugin removes a dependency required by the application. When false, it is the developer&#8217;s responsibility to ensure that the <code>WEB-INF/lib</code> directory does not contain Thorntail artifacts that would comprimise the functionality of the application. One way to do that is to avoid expressing dependencies on fractions and rely on <a href="#auto-detecting-fractions_thorntail">auto-detection</a> and/or explicitly listing them with the <strong>fractions</strong> option detailed below.
+<div class="paragraph">
+<p>This option is generally not necessary and is provided as a workaround in case the Thorntail plugin removes a dependency required by the application.
+When false, it is the responsibility of the developer to ensure that the <code>WEB-INF/lib</code> directory does not contain Thorntail artifacts that would compromise the functionality of the application.
+One way to do that is to avoid expressing dependencies on fractions and rely on <a href="#auto-detecting-fractions_thorntail">auto-detection</a> or by explicitly listing any required extra fractions using the <strong>fractions</strong> option.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -3835,10 +3839,10 @@ This option should generally not be necessary and is provided as a workaround in
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>A list of extra fractions to include when auto-detection is used. It is useful for fractions that cannot be detected or user-provided fractions.</p>
+<p>A list of extra fractions to include when using auto-detection. It is useful for fractions that cannot be detected or for user-provided fractions.</p>
 </div>
 <div class="paragraph">
-<p>The format of specifying a fraction can be:
+<p>Use one of the following formats when specifying a fraction:
 * <code>group:artifact:version</code>
 * <code>artifact:version</code>
 * <code>artifact</code></p>
@@ -3850,8 +3854,8 @@ This option should generally not be necessary and is provided as a workaround in
 <p>If no version is provided, the version is taken from the Thorntail BOM for the version of the plugin you are using.</p>
 </div>
 <div class="paragraph">
-<p>If the value starts with the character <code>!</code> a corresponding auto-detected fraction is not installed (unless it&#8217;s a dependency of any other fraction).
-In the following example the Undertow fraction is not installed even if your application references a class from the <code>javax.servlet</code> package:</p>
+<p>If the value starts with a <code>!</code> character, the corresponding auto-detected fraction is not installed (unless it is a dependency of any other fraction).
+In the following example the Undertow fraction is not installed even though your application references a class from the <code>javax.servlet</code> package:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3903,7 +3907,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">hollow</dt>
 <dd>
-<p>Specifies if the resulting executable JAR should be hollow, and therefore not include the default deployment.</p>
+<p>Specifies whether the resulting executable JAR is hollow, and, thus, whether or not it includes the default deployment.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -4073,7 +4077,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">stderrFile</dt>
 <dd>
-<p>A file path where to store the <code>stderr</code> output instead of sending it to the <code>stderr</code> output of the launching process.</p>
+<p>Specifies the path to a file where the <code>stderr</code> output is stored instead of being sent to the <code>stderr</code> output of the launching process.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -4101,7 +4105,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">stdoutFile</dt>
 <dd>
-<p>A file path where to store the <code>stdout</code> output instead of sending it to the <code>stdout</code> output of the launching process.</p>
+<p>Specifies the path to a file where the <code>stdout</code> output is stored instead of being sent to the <code>stdout</code> output of the launching process.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -4163,7 +4167,7 @@ This JAR is not created automatically, so make sure you execute the <code>packag
 </td>
 <td class="content">
 Before version 2.3.0.Final, this property was called <code>wildfly-swarm.useUberJar</code>, and only setting it to <code>true</code> enabled this behavior: <code>-Dwildfly-swarm.useUberJar=true</code>.
-You can continue using the old name, but consider using the new variant, which does not require setting a value: <code>-Dthorntail.useUberJar</code>.
+You can continue using the old name in later releases, but consider using the new variant, which no longer requires you to set a value: <code>-Dthorntail.useUberJar</code>.
 </td>
 </tr>
 </table>
@@ -4650,11 +4654,11 @@ Many configuration properties in Thorntail contain these characters, so you must
 For example, define the <code>serveraddress</code> property as <code>SERVERADDRESS</code>.</p>
 </li>
 <li>
-<p>All the <em>dot</em> (.) characters must be replaced with <em>underscore</em> (\_).
+<p>All the <em>dot</em> (.) characters must be replaced with <em>underscore</em> (_).
 For example, define the <code>thorntail.bind.address=127.0.0.1</code> property as <code>THORNTAIL_BIND_ADDRESS=127.0.0.1</code>.</p>
 </li>
 <li>
-<p>All <em>dash/hyphen</em> (-) characters must be replaced with the <code><em>DASH</em></code> string.
+<p>All <em>dash/hyphen</em> (-) characters must be replaced with the <code>_DASH_</code> string.
 For example, define the <code>thorntail.data-sources.foo.url=&lt;url&gt;</code> property as <code>THORNTAIL_DATA_DASH_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
 </li>
 <li>
@@ -4915,7 +4919,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <div class="sect3">
 <h4 id="thorntail-keycloak-server_thorntail"><a class="anchor" href="#thorntail-keycloak-server_thorntail"></a>5.3.2. Thorntail Keycloak server</h4>
 <div class="paragraph">
-<p><a href="https://www.keycloak.org/">Keycloak</a> is an open source identity and access management solution.</p>
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source identity and access management solution.</p>
 </div>
 <div class="paragraph">
 <p>Thorntail provides a stand-alone Keycloak server that you can use to test and run Keycloak Server on top of Thorntail.</p>
@@ -23288,7 +23292,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-04-17 02:14:54 MST
+Last updated 2019-04-24 01:51:25 MST
 </div>
 </div>
 </body>
