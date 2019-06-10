@@ -745,7 +745,8 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_ejb">6.13. EJB</a>
 <ul class="sectlevel3">
-<li><a href="#_ejb_remote">6.13.1. EJB Remote</a></li>
+<li><a href="#_ejb_mdb">6.13.1. EJB MDB</a></li>
+<li><a href="#_ejb_remote">6.13.2. EJB Remote</a></li>
 </ul>
 </li>
 <li><a href="#_elytron">6.14. Elytron</a></li>
@@ -6711,7 +6712,71 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_ejb_remote"><a class="anchor" href="#_ejb_remote"></a>6.13.1. EJB Remote</h4>
+<h4 id="_ejb_mdb"><a class="anchor" href="#_ejb_mdb"></a>6.13.1. EJB MDB</h4>
+<div class="paragraph">
+<p>Provides support for Message Driven Beans.</p>
+</div>
+<div class="paragraph">
+<p>For this to work, you need to deploy a resource adapter for an external messaging server.
+The name of this resource adapter must be configured in the <code>ejb3</code> subsystem.
+If the resource adapter&#8217;s connection factory is bound to a different JNDI name than <code>java:jboss/DefaultJMSConnectionFactory</code>, the JNDI name must be configured in the <code>ee</code> subsystem.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">thorntail</span>:
+  <span class="comment"># deploy AMQP resource adapter</span>
+  <span class="key">deployment</span>:
+    <span class="error">org.amqphub.jca:resource-adapter.rar</span>:
+  <span class="comment"># configure the resource adapter</span>
+  <span class="key">resource-adapters</span>:
+    <span class="key">resource-adapters</span>:
+      <span class="comment"># the resource adapter is called `default`</span>
+      <span class="key">default</span>:
+        <span class="key">archive</span>: <span class="string"><span class="content">resource-adapter.rar</span></span>
+        <span class="key">transaction-support</span>: <span class="string"><span class="content">NoTransaction</span></span>
+        <span class="key">connection-definitions</span>:
+          <span class="key">default</span>:
+            <span class="comment"># the connection factory is bound to JNDI name `java:global/jms/default`</span>
+            <span class="key">jndi-name</span>: <span class="string"><span class="content">java:global/jms/default</span></span>
+            <span class="key">class-name</span>: <span class="string"><span class="content">org.jboss.resource.adapter.jms.JmsManagedConnectionFactory</span></span>
+            <span class="key">config-properties</span>:
+              <span class="key">ConnectionFactory</span>:
+                <span class="key">value</span>: <span class="string"><span class="content">factory1</span></span>
+              <span class="key">UserName</span>:
+                <span class="key">value</span>: <span class="string"><span class="content">username</span></span>
+              <span class="key">Password</span>:
+                <span class="key">value</span>: <span class="string"><span class="content">password</span></span>
+              <span class="key">JndiParameters</span>:
+                <span class="key">value</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;connectionFactory.factory1=amqp://${env.MESSAGING_SERVICE_HOST:localhost}:${env.MESSAGING_SERVICE_PORT:5672}</span><span class="delimiter">&quot;</span></span>
+  <span class="comment"># configure the `ejb3` and `ee` subsystems</span>
+  <span class="key">ejb3</span>:
+    <span class="key">default-resource-adapter-name</span>: <span class="string"><span class="content">default</span></span>
+  <span class="key">ee</span>:
+    <span class="key">annotation-property-replacement</span>: <span class="string"><span class="content">true</span></span>
+    <span class="key">default-bindings-service</span>:
+      <span class="key">jms-connection-factory</span>: <span class="string"><span class="content">java:global/jms/default</span></span></code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_the_messaging_fraction"><a class="anchor" href="#_the_messaging_fraction"></a>The <code>messaging</code> fraction</h5>
+<div class="paragraph">
+<p>This fraction provides a minimum subset of the <code>messaging</code> fraction, enough to use message driven beans.
+If you use the <code>messaging</code> fraction, don&#8217;t use this fraction.</p>
+</div>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>ejb-mdb<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejb_remote"><a class="anchor" href="#_ejb_remote"></a>6.13.2. EJB Remote</h4>
 <div class="paragraph">
 <p>Enables remote EJB and remote naming.
 If the <code>messaging</code> fraction is present, enables remote messaging as well.</p>
@@ -23295,7 +23360,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-06-07 03:00:21 MST
+Last updated 2019-06-10 02:29:39 MST
 </div>
 </div>
 </body>
