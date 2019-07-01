@@ -19486,7 +19486,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.realm</dt>
 <dd>
-<p>If set, a security domain with this name that supports MicroProfile JWT is automatically created in the security subsystem. The realmName parameter of the @LoginConfig annotation must be set to the same value.</p>
+<p>Defines the security domain which should be used for MicroProfile JWT. If no security domain with this name exists, one will be created using sensible defaults.  If this option is set, then the realmName property of the @LoginConfig annotation does not have to be configured; but if it is, then it must have the same value as this option.</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.roles.file</dt>
 <dd>
@@ -23360,7 +23360,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-06-28 03:37:49 MST
+Last updated 2019-07-01 05:46:58 MST
 </div>
 </div>
 </body>
