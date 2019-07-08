@@ -19480,9 +19480,17 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
+<dt class="hdlist1">thorntail.microprofile.jwt.claims.groups</dt>
+<dd>
+<p>Default group name. This property can be used to support the JWT tokens without a 'groups' claim.</p>
+</dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.default-missing-method-permissions-deny-access</dt>
 <dd>
 <p>If a JAX-RS resource has no class-level security metadata, then if this property is set to <code>true</code> and at least one resource method has security metadata all other resource methods without security metadata have an implicit <code>@DenyAll</code>, otherwise resource methods without security metadata are not secured</p>
+</dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.path.groups</dt>
+<dd>
+<p>Path to the claim containing an array of groups, for example: 'realm/groups'. It can be used if a token has no 'groups' claim but has the groups set in a different claim</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.realm</dt>
 <dd>
@@ -19496,9 +19504,17 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <dd>
 <p>Roles properties map</p>
 </dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.token.cookie</dt>
+<dd>
+<p>Cookie name containing a JWT token. This property is ignored unless the 'thorntail.microprofile.jwt.token.header' is set to 'Cookie'</p>
+</dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.exp-grace-period</dt>
 <dd>
 <p>The JWT token expiration grace period in seconds</p>
+</dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.token.header</dt>
+<dd>
+<p>HTTP header which is expected to contain a JWT token, default value is 'Authorization'</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.issued-by</dt>
 <dd>
@@ -23360,7 +23376,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-07-01 05:46:45 MST
+Last updated 2019-07-08 03:07:15 MST
 </div>
 </div>
 </body>
