@@ -871,7 +871,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Thorntail is a framework based on the popular WildFly Java application server to enable the creation of small, standalone microservice-based applications.
+<p>Thorntail is a framework based on the popular WildFly Java application server to enable the creation of small, stand-alone microservice-based applications.
 Thorntail is capable of producing so-called <em>just enough app-server</em> to support each component of your system.</p>
 </div>
 <div class="paragraph">
@@ -2949,7 +2949,7 @@ This is what the MicroProfile Metrics specification requires, and also what Prom
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@GET</span>
-<span class="annotation">@Counted</span>(monotonic = <span class="predefined-constant">true</span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-count</span><span class="delimiter">&quot;</span></span>, absolute = <span class="predefined-constant">true</span>)
+<span class="annotation">@Counted</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-count</span><span class="delimiter">&quot;</span></span>, absolute = <span class="predefined-constant">true</span>)
 <span class="annotation">@Timed</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-time</span><span class="delimiter">&quot;</span></span>, absolute = <span class="predefined-constant">true</span>)
 <span class="directive">public</span> <span class="predefined-type">String</span> get() {
     <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from counted and timed endpoint</span><span class="delimiter">&quot;</span></span>;
@@ -2957,7 +2957,7 @@ This is what the MicroProfile Metrics specification requires, and also what Prom
 </div>
 </div>
 <div class="paragraph">
-<p>Here, the <code>@Counted(monotonic = true)</code> annotation is used to keep track of how many times this method was invoked.
+<p>Here, the <code>@Counted</code> annotation is used to keep track of how many times this method was invoked.
 The <code>@Timed</code> annotation is used to keep track of how long the invocations took.</p>
 </div>
 <div class="paragraph">
@@ -19488,13 +19488,17 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <dd>
 <p>If a JAX-RS resource has no class-level security metadata, then if this property is set to <code>true</code> and at least one resource method has security metadata all other resource methods without security metadata have an implicit <code>@DenyAll</code>, otherwise resource methods without security metadata are not secured</p>
 </dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.enabled</dt>
+<dd>
+<p>Set this to false to disable the MP JWT authentication mechanism. Defaults to true.</p>
+</dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.path.groups</dt>
 <dd>
 <p>Path to the claim containing an array of groups, for example: 'realm/groups'. It can be used if a token has no 'groups' claim but has the groups set in a different claim</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.realm</dt>
 <dd>
-<p>Defines the security domain which should be used for MicroProfile JWT. If no security domain with this name exists, one will be created using sensible defaults.  If this option is set, then the realmName property of the @LoginConfig annotation does not have to be configured; but if it is, then it must have the same value as this option.</p>
+<p>Defines the security domain which should be used for MicroProfile JWT. If no security domain with this name exists, one will be created using sensible defaults.  If this option is set, then the @LoginConfig annotation is not needed but if it is present then its realmName property, if set, must have the same value as this option.</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.roles.file</dt>
 <dd>
@@ -19522,15 +19526,19 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.jwks-refresh-interval</dt>
 <dd>
-<p>The interval at which the JWKS URI should be queried for keys (in minutes).</p>
+<p>The interval at which the JWKS URI should be queried for keys (in minutes). It is ignored if the value of either signer-pub-key-location or jwks-uri is not HTTPS URI</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.jwks-uri</dt>
 <dd>
-<p>The JWKS URI from which to load public keys (if 'signer-pub-key' is set, this setting is ignored).</p>
+<p>The JWKS URI from which to load public keys. This property is deprecated, use the 'thorntail.microprofile.jwt.token.signer-pub-key-location' property instead</p>
 </dd>
 <dt class="hdlist1">thorntail.microprofile.jwt.token.signer-pub-key</dt>
 <dd>
-<p>The public key of the JWT token signer. Can be prefixed 'file:' or 'classpath:' for key assets, otherwise the key contents are expected</p>
+<p>The public key of the JWT token signer. Can be prefixed 'file:' or 'classpath:' to refer to external assets, but this is deprecated; use 'thorntail.microprofile.jwt.token.signer-pub-key-location' instead</p>
+</dd>
+<dt class="hdlist1">thorntail.microprofile.jwt.token.signer-pub-key-location</dt>
+<dd>
+<p>Location of the public key of the JWT token signer. By default, or when the 'classpath:' prefix is present, this is a classpath resource. Can be prefixed with 'file:' to refer to an external file. Can also be a HTTPS URL of a JWK Set.</p>
 </dd>
 </dl>
 </div>
@@ -23376,7 +23384,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.4.1.Final-SNAPSHOT<br>
-Last updated 2019-07-08 03:07:16 MST
+Last updated 2019-07-17 02:41:56 MST
 </div>
 </div>
 </body>
