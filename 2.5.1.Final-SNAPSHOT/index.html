@@ -4550,10 +4550,10 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 </div>
 </div>
 <div class="sect4">
-<h5 id="specifying-jdbc-drivers-for-hollow-jars_thorntail"><a class="anchor" href="#specifying-jdbc-drivers-for-hollow-jars_thorntail"></a>Specifying JDBC drivers for hollow JARs</h5>
+<h5 id="specifying-external-jdbc-drivers_thorntail"><a class="anchor" href="#specifying-external-jdbc-drivers_thorntail"></a>Specifying external JDBC drivers</h5>
 <div class="paragraph">
-<p>When executing a hollow JAR, you can specify a JDBC Driver JAR using the <code>thorntail.classpath</code> property.
-This way, you do not need to package the driver in the hollow JAR.</p>
+<p>When executing an application (either as a hollow JAR or as an uberjar), you can specify a JDBC driver JAR using the <code>thorntail.classpath</code> system property.
+This way, you do not need to package the driver in the application.</p>
 </div>
 <div class="paragraph">
 <p>The <code>thorntail.classpath</code> property accepts one or more paths to JAR files separated by <code>;</code> (a semicolon).
@@ -23371,7 +23371,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.5.1.Final-SNAPSHOT<br>
-Last updated 2019-08-23 13:54:49 MST
+Last updated 2019-08-27 08:39:09 MST
 </div>
 </div>
 </body>
