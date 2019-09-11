@@ -21019,6 +21019,47 @@ for graceful pause/resume/shutdown of the container.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
+<div class="dlist">
+<div class="title">Configuration</div>
+<dl>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.auto-deploy-exploded</dt>
+<dd>
+<p>Allows the automatic deployment of exploded content without requiring a .dodeploy marker file. Recommended for only basic development scenarios to prevent exploded application deployment from occurring during changes by the developer or operating system.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.auto-deploy-xml</dt>
+<dd>
+<p>Allows automatic deployment of XML content without requiring a .dodeploy marker file.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.auto-deploy-zipped</dt>
+<dd>
+<p>Allows automatic deployment of zipped content without requiring a .dodeploy marker file.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.deployment-timeout</dt>
+<dd>
+<p>The time value in seconds for the deployment scanner to allow a deployment attempt before being cancelled.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.path</dt>
+<dd>
+<p>The actual filesystem path to be scanned. Treated as an absolute path, unless the 'relative-to' attribute is specified, in which case the value is treated as relative to that path.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.relative-to</dt>
+<dd>
+<p>Reference to a filesystem path defined in the "paths" section of the server configuration.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.runtime-failure-causes-rollback</dt>
+<dd>
+<p>Flag indicating whether a runtime failure of a deployment causes a rollback of the deployment as well as all other (maybe unrelated) deployments as part of the scan operation.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.scan-enabled</dt>
+<dd>
+<p>Flag indicating if all scanning (including initial scanning at startup) is enabled.</p>
+</dd>
+<dt class="hdlist1">thorntail.deployment-scanner.scanners.<em>KEY</em>.scan-interval</dt>
+<dd>
+<p>Periodic interval, in milliseconds, at which the repository should be scanned for changes. A value of less than 1 indicates the repository should only be scanned at initial startup.</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_security"><a class="anchor" href="#_security"></a>6.59. Security</h3>
@@ -23371,7 +23412,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.5.1.Final-SNAPSHOT<br>
-Last updated 2019-09-10 13:55:52 MST
+Last updated 2019-09-11 09:00:35 MST
 </div>
 </div>
 </body>
