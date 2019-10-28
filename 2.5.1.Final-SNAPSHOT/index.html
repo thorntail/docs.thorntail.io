@@ -728,7 +728,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_cdi_jax_rs_api_enhancements">6.6.2. CDI JAX-RS API Enhancements</a></li>
 </ul>
 </li>
-<li><a href="#_jboss_cli">6.7. JBoss CLI</a></li>
+<li><a href="#_cli">6.7. CLI</a></li>
 <li><a href="#_connector">6.8. Connector</a></li>
 <li><a href="#_container">6.9. Container</a></li>
 <li><a href="#_datasources">6.10. Datasources</a>
@@ -5361,7 +5361,27 @@ through JSR-352.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_jboss_cli"><a class="anchor" href="#_jboss_cli"></a>6.7. JBoss CLI</h3>
+<h3 id="_cli"><a class="anchor" href="#_cli"></a>6.7. CLI</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+This fraction is not useful on its own.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This fraction only exists so that Thorntail can build and ship a <code>cli-thorntail.jar</code> uberjar.
+This uberjar essentially provides the WildFly CLI&#8201;&#8212;&#8201;the command-line management tool.
+It is available from Maven Central under the <code>io.thorntail.cli:cli</code> coordinates.
+You can run it, just like any other Thorntail uberjar, using <code>java -jar cli-2.5.0.Final-thorntail.jar</code>, and it accepts command-line arguments just like the WildFly CLI.
+Most likely, you will want to use the <code>-c</code> argument, so that the CLI automatically connects to the management interface of a running application: <code>java -jar cli-2.5.0.Final-thorntail.jar -c</code>.
+Note that the application must include the <code>management</code> fraction, otherwise the management interface will not be exposed and the CLI tool won&#8217;t be able to connect to it.</p>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -23412,7 +23432,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.5.1.Final-SNAPSHOT<br>
-Last updated 2019-10-25 09:12:49 MST
+Last updated 2019-10-28 05:07:12 MST
 </div>
 </div>
 </body>
