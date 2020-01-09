@@ -3721,7 +3721,8 @@ If set, the Thorntail process suspends on start and opens a debugger on this por
 </dd>
 <dt class="hdlist1">filterWebInfLib</dt>
 <dd>
-<p>If true, the plugin removes artifacts that are provided by the Thorntail runtime from the <code>WEB-INF/lib</code> directory of the project WAR file.
+<p>If <code>true</code>, the plugin removes artifacts that are provided by the Thorntail runtime from the <code>WEB-INF/lib</code> directory of the project WAR file.
+If <code>uberjar-only</code>, this transformation is only done on the WAR file that is put into the uberjar, and the standalone WAR file remains untouched.
 Otherwise, the contents of <code>WEB-INF/lib</code> remain untouched.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -24573,7 +24574,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.6.1.Final-SNAPSHOT<br>
-Last updated 2020-01-04 15:47:14 MST
+Last updated 2020-01-09 09:29:20 MST
 </div>
 </div>
 </body>
