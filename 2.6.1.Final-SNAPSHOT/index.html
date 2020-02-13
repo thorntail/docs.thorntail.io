@@ -805,16 +805,17 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#_messaging">6.41. Messaging</a></li>
-<li><a href="#_microprofile">6.42. MicroProfile</a>
+<li><a href="#microprofile">6.42. MicroProfile</a>
 <ul class="sectlevel3">
-<li><a href="#_microprofile_config">6.42.1. MicroProfile Config</a></li>
-<li><a href="#microprofile-fault-tolerance">6.42.2. MicroProfile Fault Tolerance</a></li>
-<li><a href="#_microprofile_health">6.42.3. MicroProfile Health</a></li>
-<li><a href="#_microprofile_jwt_rbac_auth">6.42.4. MicroProfile JWT RBAC Auth</a></li>
-<li><a href="#_microprofile_metrics">6.42.5. MicroProfile Metrics</a></li>
-<li><a href="#_microprofile_openapi">6.42.6. MicroProfile OpenAPI</a></li>
-<li><a href="#_microprofile_opentracing">6.42.7. MicroProfile OpenTracing</a></li>
-<li><a href="#_microprofile_rest_client">6.42.8. MicroProfile Rest Client</a></li>
+<li><a href="#_note_about_yaml_configuration">6.42.1. Note about YAML configuration</a></li>
+<li><a href="#_microprofile_config">6.42.2. MicroProfile Config</a></li>
+<li><a href="#microprofile-fault-tolerance">6.42.3. MicroProfile Fault Tolerance</a></li>
+<li><a href="#_microprofile_health">6.42.4. MicroProfile Health</a></li>
+<li><a href="#_microprofile_jwt_rbac_auth">6.42.5. MicroProfile JWT RBAC Auth</a></li>
+<li><a href="#_microprofile_metrics">6.42.6. MicroProfile Metrics</a></li>
+<li><a href="#_microprofile_openapi">6.42.7. MicroProfile OpenAPI</a></li>
+<li><a href="#_microprofile_opentracing">6.42.8. MicroProfile OpenTracing</a></li>
+<li><a href="#_microprofile_rest_client">6.42.9. MicroProfile Rest Client</a></li>
 </ul>
 </li>
 <li><a href="#_modcluster">6.43. Modcluster</a></li>
@@ -4738,7 +4739,8 @@ In addition to that, the YAML strategy provides grouping of environment-specific
 <div class="sect4">
 <h5 id="the-general-yaml-file-format_thorntail"><a class="anchor" href="#the-general-yaml-file-format_thorntail"></a>The general YAML file format</h5>
 <div class="paragraph">
-<p>The Thorntail configuration item names correspond to the YAML configuration structure.</p>
+<p>The Thorntail configuration item names correspond to the YAML configuration structure.
+That is, if you want to write a piece of YAML configuration for some configuration property, you just need to separate the configuration property around the <code>.</code> characters.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 3. YAML configuration</div>
@@ -4753,6 +4755,29 @@ In addition to that, the YAML strategy provides grouping of environment-specific
     <span class="key">servers</span>:
       <span class="key">default</span>:
         <span class="key">default-host</span>: <span class="string"><span class="content">&lt;myhost&gt;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This simple rule applies always, there are no exceptions and no additional delimiters.
+Most notably, some MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
+When writing the YAML configuration, it is still required to split around <code>.</code> and <em>not</em> around <code>/</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. YAML configuration for MicroProfile Rest Client</div>
+<div class="content">
+<div class="paragraph">
+<p>For example, MicroProfile Rest Client specifies that you can configure URL of an external service with a configuration property named <code>com.example.demo.client.Service/mp-rest/url</code>.
+This translates to the following YAML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">com</span>:
+  <span class="key">example</span>:
+    <span class="key">demo</span>:
+      <span class="key">client</span>:
+        <span class="key">Service/mp-rest/url</span>: <span class="string"><span class="content">http://localhost:8080/...</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -4774,7 +4799,7 @@ The specified files are loaded, in the order you provided them, before <code>pro
 A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code>project-&lt;name&gt;.yml</code> file on your classpath.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Specifying configuration files on the command line</div>
+<div class="title">Example 5. Specifying configuration files on the command line</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -4812,7 +4837,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <p>Both the <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> command-line options can be used at the same time, but files specified using the <code>-s &lt;path&gt;</code> option take precedence over YAML files contained in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Specifying configuration files inside and outside of the application</div>
+<div class="title">Example 6. Specifying configuration files inside and outside of the application</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -4929,7 +4954,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Additional interface configuration</div>
+<div class="title">Example 7. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -4975,7 +5000,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Socket-binding group</div>
+<div class="title">Example 8. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -4993,7 +5018,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Socket binding</div>
+<div class="title">Example 9. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -5011,7 +5036,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Outbound socket binding</div>
+<div class="title">Example 10. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -20456,7 +20481,31 @@ reload</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_microprofile"><a class="anchor" href="#_microprofile"></a>6.42. MicroProfile</h3>
+<h3 id="microprofile"><a class="anchor" href="#microprofile"></a>6.42. MicroProfile</h3>
+<div class="sect3">
+<h4 id="_note_about_yaml_configuration"><a class="anchor" href="#_note_about_yaml_configuration"></a>6.42.1. Note about YAML configuration</h4>
+<div class="paragraph">
+<p>Some MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
+When writing the YAML configuration, it is required to split around <code>.</code> and <em>not</em> around <code>/</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11. YAML configuration for MicroProfile Rest Client</div>
+<div class="content">
+<div class="paragraph">
+<p>For example, MicroProfile Rest Client specifies that you can configure URL of an external service with a configuration property named <code>com.example.demo.client.Service/mp-rest/url</code>.
+This translates to the following YAML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">com</span>:
+  <span class="key">example</span>:
+    <span class="key">demo</span>:
+      <span class="key">client</span>:
+        <span class="key">Service/mp-rest/url</span>: <span class="string"><span class="content">http://localhost:8080/...</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20466,8 +20515,9 @@ reload</code></pre>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_microprofile_config"><a class="anchor" href="#_microprofile_config"></a>6.42.1. MicroProfile Config</h4>
+<h4 id="_microprofile_config"><a class="anchor" href="#_microprofile_config"></a>6.42.2. MicroProfile Config</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20504,7 +20554,7 @@ reload</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="microprofile-fault-tolerance"><a class="anchor" href="#microprofile-fault-tolerance"></a>6.42.2. MicroProfile Fault Tolerance</h4>
+<h4 id="microprofile-fault-tolerance"><a class="anchor" href="#microprofile-fault-tolerance"></a>6.42.3. MicroProfile Fault Tolerance</h4>
 <div class="paragraph">
 <p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse MicroProfile Fault Tolerance API</a>.
 The implementation depends on the <a href="#_hystrix">Hystrix fraction</a>, which is added transitively into your application.
@@ -20551,7 +20601,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_health"><a class="anchor" href="#_microprofile_health"></a>6.42.3. MicroProfile Health</h4>
+<h4 id="_microprofile_health"><a class="anchor" href="#_microprofile_health"></a>6.42.4. MicroProfile Health</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20572,7 +20622,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_jwt_rbac_auth"><a class="anchor" href="#_microprofile_jwt_rbac_auth"></a>6.42.4. MicroProfile JWT RBAC Auth</h4>
+<h4 id="_microprofile_jwt_rbac_auth"><a class="anchor" href="#_microprofile_jwt_rbac_auth"></a>6.42.5. MicroProfile JWT RBAC Auth</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20649,7 +20699,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_metrics"><a class="anchor" href="#_microprofile_metrics"></a>6.42.5. MicroProfile Metrics</h4>
+<h4 id="_microprofile_metrics"><a class="anchor" href="#_microprofile_metrics"></a>6.42.6. MicroProfile Metrics</h4>
 <div class="paragraph">
 <p>This fraction implements the <a href="https://github.com/eclipse/microprofile-metrics/releases/tag/1.0">MicroProfile Metrics 1.0 specification</a>.</p>
 </div>
@@ -20708,7 +20758,7 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_openapi"><a class="anchor" href="#_microprofile_openapi"></a>6.42.6. MicroProfile OpenAPI</h4>
+<h4 id="_microprofile_openapi"><a class="anchor" href="#_microprofile_openapi"></a>6.42.7. MicroProfile OpenAPI</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20720,7 +20770,7 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_opentracing"><a class="anchor" href="#_microprofile_opentracing"></a>6.42.7. MicroProfile OpenTracing</h4>
+<h4 id="_microprofile_opentracing"><a class="anchor" href="#_microprofile_opentracing"></a>6.42.8. MicroProfile OpenTracing</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20732,7 +20782,7 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_rest_client"><a class="anchor" href="#_microprofile_rest_client"></a>6.42.8. MicroProfile Rest Client</h4>
+<h4 id="_microprofile_rest_client"><a class="anchor" href="#_microprofile_rest_client"></a>6.42.9. MicroProfile Rest Client</h4>
 <div class="sect4">
 <h5 id="_cdi_interceptors_support"><a class="anchor" href="#_cdi_interceptors_support"></a>CDI Interceptors Support</h5>
 <div class="paragraph">
@@ -24574,7 +24624,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.6.1.Final-SNAPSHOT<br>
-Last updated 2020-02-06 09:53:23 MST
+Last updated 2020-02-13 10:27:54 MST
 </div>
 </div>
 </body>
