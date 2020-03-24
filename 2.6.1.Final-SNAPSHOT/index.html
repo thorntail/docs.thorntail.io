@@ -2445,7 +2445,7 @@ One technique that makes debugging easier is called <em>distributed tracing</em>
 Distributed tracing is collecting information about service invocations, correlating it to find all invocations related to a single user request, and visualizing the data in a form that helps you understand the hierarchy of invocations and makes finding problems easier.</p>
 </div>
 <div class="paragraph">
-<p>Thorntail provides a fraction for MicroProfile OpenTracing, an API for distributed tracing, built on JAX-RS and OpenTracing.
+<p>Thorntail provides a fraction for Eclipse MicroProfile OpenTracing, an API for distributed tracing, built on JAX-RS and OpenTracing.
 Another fraction is provided to configure Jaeger, a popular tracer.
 Inside the application, you need nothing except these fractions.
 Outside of the application, a tracer typically runs.</p>
@@ -2829,7 +2829,7 @@ To make solving problems easier, applications must expose machine-readable data 
 Collecting metrics, visualizing them, setting alerts, discovering trends, etc. are very important to keep a service healthy.</p>
 </div>
 <div class="paragraph">
-<p>Thorntail provides a fraction for MicroProfile Metrics, an easy-to-use API for exposing metrics.
+<p>Thorntail provides a fraction for Eclipse MicroProfile Metrics, an easy-to-use API for exposing metrics.
 Among other formats, it supports exporting data in the native format of Prometheus, a popular monitoring solution.
 Inside the application, you need nothing except this fraction.
 Outside of the application, Prometheus typically runs.</p>
@@ -3022,7 +3022,7 @@ Those metrics are prefixed with <code>base:</code> and <code>vendor:</code> and 
 <div class="title">Additional resources</div>
 <ul>
 <li>
-<p>For additional types of metrics, see the <a href="https://github.com/eclipse/microprofile-metrics" target="_blank" rel="noopener">MicroProfile Metrics documentation</a>.</p>
+<p>For additional types of metrics, see the <a href="https://github.com/eclipse/microprofile-metrics" target="_blank" rel="noopener">Eclipse MicroProfile Metrics documentation</a>.</p>
 </li>
 </ul>
 </div>
@@ -4761,7 +4761,7 @@ That is, if you want to write a piece of YAML configuration for some configurati
 </div>
 <div class="paragraph">
 <p>This simple rule applies always, there are no exceptions and no additional delimiters.
-Most notably, some MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
+Most notably, some Eclipse MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
 When writing the YAML configuration, it is still required to split around <code>.</code> and <em>not</em> around <code>/</code>.</p>
 </div>
 <div class="exampleblock">
@@ -4895,10 +4895,10 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <div class="sect3">
 <h4 id="thorntail-microprofile-server_thorntail"><a class="anchor" href="#thorntail-microprofile-server_thorntail"></a>5.3.1. Thorntail Microprofile server</h4>
 <div class="paragraph">
-<p><a href="https://projects.eclipse.org/projects/technology.microprofile">MicroProfile</a> is a project aimed at optimizing Enterpise Java for the microservices architecture.</p>
+<p><a href="https://projects.eclipse.org/projects/technology.microprofile">Eclipse MicroProfile</a> is a project aimed at optimizing Enterpise Java for the microservices architecture.</p>
 </div>
 <div class="paragraph">
-<p>Thorntail implements <a href="https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-2.2">MicroProfile 2.2</a> and provides a stand-alone MicroProfile server that you can use to deploy compliant WAR applications.</p>
+<p>Thorntail provides a stand-alone Eclipse MicroProfile server that you can use to deploy compliant WAR applications.</p>
 </div>
 <h5 id="_download" class="discrete">Download</h5>
 <div class="paragraph">
@@ -15543,7 +15543,7 @@ to JSR-220.</p>
 <div class="sect3">
 <h4 id="_keycloak_microprofile_jwt"><a class="anchor" href="#_keycloak_microprofile_jwt"></a>6.36.1. Keycloak MicroProfile JWT</h4>
 <div class="paragraph">
-<p>Uses Keycloak Adapter API to validate the tokens issued by Keycloak and makes these tokens accessible with MicroProfile JWT API.</p>
+<p>Uses Keycloak Adapter API to validate the tokens issued by Keycloak and makes these tokens accessible with Eclipse MicroProfile JWT API.</p>
 </div>
 <div class="paragraph">
 <p>It depends on the <code>keycloak.json</code> configuration file and ignores the MicroProfile JWT configuration properties given that the mapping from the former to the latter is not always possible. It does not use the WildFly Keycloak Adapter subsystem.</p>
@@ -20482,10 +20482,13 @@ reload</code></pre>
 </div>
 <div class="sect2">
 <h3 id="microprofile"><a class="anchor" href="#microprofile"></a>6.42. MicroProfile</h3>
+<div class="paragraph">
+<p>You can use this fraction to add a dependency on all fractions that implement the Eclipse MicroProfile specifications.</p>
+</div>
 <div class="sect3">
 <h4 id="_note_about_yaml_configuration"><a class="anchor" href="#_note_about_yaml_configuration"></a>6.42.1. Note about YAML configuration</h4>
 <div class="paragraph">
-<p>Some MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
+<p>Some Eclipse MicroProfile specifications define configuration properties that use <code>/</code> as a delimiter, because the <code>.</code> character is used in fully qualified class names.
 When writing the YAML configuration, it is required to split around <code>.</code> and <em>not</em> around <code>/</code>.</p>
 </div>
 <div class="exampleblock">
@@ -20701,7 +20704,7 @@ Also don&#8217;t forget to set the <code>thorntail.hystrix.threadpool.default.al
 <div class="sect3">
 <h4 id="_microprofile_metrics"><a class="anchor" href="#_microprofile_metrics"></a>6.42.6. MicroProfile Metrics</h4>
 <div class="paragraph">
-<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-metrics/releases/tag/1.0">MicroProfile Metrics 1.0 specification</a>.</p>
+<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-metrics/">Eclipse MicroProfile Metrics specification</a>.</p>
 </div>
 <div class="paragraph">
 <p>To use this in your project you need the following in your pom.xml</p>
@@ -20783,6 +20786,9 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 <div class="sect3">
 <h4 id="_microprofile_rest_client"><a class="anchor" href="#_microprofile_rest_client"></a>6.42.9. MicroProfile Rest Client</h4>
+<div class="paragraph">
+<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-rest-client">Eclipse MicroProfile Rest Client specification</a>.</p>
+</div>
 <div class="sect4">
 <h5 id="_cdi_interceptors_support"><a class="anchor" href="#_cdi_interceptors_support"></a>CDI Interceptors Support</h5>
 <div class="paragraph">
@@ -24624,7 +24630,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.6.1.Final-SNAPSHOT<br>
-Last updated 2020-03-04 10:14:48 MST
+Last updated 2020-03-24 04:58:57 MST
 </div>
 </div>
 </body>
