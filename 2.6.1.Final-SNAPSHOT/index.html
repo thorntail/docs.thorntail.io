@@ -3220,7 +3220,7 @@ absolute root of the fraction java package, such as <code>org.wildfly.swarm.unde
 <span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
 <span class="keyword">import</span> <span class="include">org.wildfly.swarm.spi.api.Fraction</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CheeseFraction</span> <span class="directive">implements</span> Fraction {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CheeseFraction</span> <span class="directive">implements</span> Fraction&lt;CheeseFraction&gt; {
   <span class="comment">// arbitrary configuration parameters are allowed</span>
 
   <span class="directive">public</span> <span class="type">void</span> cheese(<span class="predefined-type">String</span> type) {
@@ -3606,8 +3606,8 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 <dl>
 <dt class="hdlist1">bundleDependencies</dt>
 <dd>
-<p>If true, dependencies are included in the <code>-thorntail.jar</code> file.
-Otherwise, they are resolved from <code>$M2_REPO</code> or from the network at runtime.</p>
+<p>If <code>true</code>, dependencies are included in the <code>-thorntail.jar</code> file.
+Otherwise, they are resolved from local Maven repository or from the network at runtime.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3635,6 +3635,52 @@ Otherwise, they are resolved from <code>$M2_REPO</code> or from the network at r
 </tbody>
 </table>
 </dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In case you set <code>bundleDependencies</code> to <code>false</code>, here&#8217;s how the local Maven repository is found at runtime:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If a <code>settings.xml</code> file is found and it defines a local repository, then it is used.
+When looking for the <code>settings.xml</code> file, the following locations are considered:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If the <code>jboss.modules.settings.xml.url</code> system property is defined, then it is used.
+Its value needs to be a <code>file://...</code> URL of the <code>settings.xml</code> file.</p>
+</li>
+<li>
+<p>Otherwise, if <code>~/.m2/settings.xml</code> file exists, then it is used.</p>
+</li>
+<li>
+<p>Otherwise, if <code>$M2_HOME/conf/settings.xml</code> file exists, then it is used.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Otherwise, if the <code>maven.repo.local</code> system property is defined, then it is used.</p>
+</li>
+<li>
+<p>Otherwise, the standard location <code>~/.m2/repository</code> is used.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">debug</dt>
 <dd>
 <p>The port to use for debugging.
@@ -4333,6 +4379,24 @@ The JAR file execution requires normal Java debug agent parameters.</p>
 </table>
 </div>
 </div>
+</dd>
+<dt class="hdlist1">thorntail.io.tmpdir</dt>
+<dd>
+<p>Temporary directory Thorntail uses for unpacking the uberjar and for other temporary files.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>java.io.tmpdir</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </dd>
 </dl>
 </div>
@@ -24618,7 +24682,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.6.1.Final-SNAPSHOT<br>
-Last updated 2020-06-02 10:45:47 MST
+Last updated 2020-06-09 04:08:33 MST
 </div>
 </div>
 </body>
