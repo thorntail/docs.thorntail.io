@@ -652,17 +652,18 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#logging-to-a-file_thorntail">3.9.2. Logging to a file</a></li>
 </ul>
 </li>
-<li><a href="#distributed-tracing_thorntail">3.10. Distributed tracing</a>
+<li><a href="#enabling-https_thorntail">3.10. Enabling HTTPS</a></li>
+<li><a href="#distributed-tracing_thorntail">3.11. Distributed tracing</a>
 <ul class="sectlevel3">
-<li><a href="#what-is-distributed-tracing_thorntail">3.10.1. What is distributed tracing</a></li>
-<li><a href="#tracing-a-single-service_thorntail">3.10.2. Tracing a single service</a></li>
-<li><a href="#tracing-a-complex-service_thorntail">3.10.3. Tracing a complex service</a></li>
+<li><a href="#what-is-distributed-tracing_thorntail">3.11.1. What is distributed tracing</a></li>
+<li><a href="#tracing-a-single-service_thorntail">3.11.2. Tracing a single service</a></li>
+<li><a href="#tracing-a-complex-service_thorntail">3.11.3. Tracing a complex service</a></li>
 </ul>
 </li>
-<li><a href="#application-metrics_thorntail">3.11. Application metrics</a>
+<li><a href="#application-metrics_thorntail">3.12. Application metrics</a>
 <ul class="sectlevel3">
-<li><a href="#what-are-metrics_thorntail">3.11.1. What are metrics</a></li>
-<li><a href="#exposing-application-metrics_thorntail">3.11.2. Exposing application metrics</a></li>
+<li><a href="#what-are-metrics_thorntail">3.12.1. What are metrics</a></li>
+<li><a href="#exposing-application-metrics_thorntail">3.12.2. Exposing application metrics</a></li>
 </ul>
 </li>
 </ul>
@@ -2433,12 +2434,122 @@ Under <code>logging</code>, add a <code>root-logger</code> section with the hand
 </div>
 </div>
 <div class="sect2">
-<h3 id="distributed-tracing_thorntail"><a class="anchor" href="#distributed-tracing_thorntail"></a>3.10. Distributed tracing</h3>
+<h3 id="enabling-https_thorntail"><a class="anchor" href="#enabling-https_thorntail"></a>3.10. Enabling HTTPS</h3>
+<div class="paragraph">
+<p>Web applications use HTTPS to improve transport security between clients and servers.
+This section shows you how to enable HTTPS in Thorntail.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Keystore in the JKS format. This keystore must include a private key and a corresponding certificate.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not have a keystore, use the <code>keytool</code> command to create it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">keytool -genkeypair -keystore my-keystore.jks -storepass my-password -alias my-https-key -keypass my-password -dname CN=localhost -sigalg SHA1withRSA -validity 100 -keyalg RSA -keysize 2048</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This keystore includes a self-signed certificate.
+It is recommended to use the keystore only for testing purposes.</p>
+</div>
+<div class="paragraph">
+<p>To get a certificate that is trusted by web browsers, you can use <a href="https://letsencrypt.org/">Let&#8217;s Encrypt</a> or any other certificate authority.</p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the <code>&lt;dependencies&gt;</code> section of your <code>pom.xml</code> file, include the <code>management</code> fraction:</p>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>management<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the HTTPS properties to the application configuration file:</p>
+<div class="listingblock">
+<div class="title">src/main/resources/project-defaults.yml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">thorntail:
+  https:
+    keystore:
+      path: my-keystore.jks
+      password: my-password
+    key:
+      alias: my-https-key
+      password: my-password</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the application and use <code>curl</code> to verify that the application is accessible over HTTPS:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">curl -k -v https://localhost:8443/</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Additional resources</div>
+<p>For more examples of how to enable HTTPS, see the <a href="https://github.com/rhoar-qe/thorntail-test-suite/tree/master/protocols" target="_blank" rel="noopener">Thorntail test suite</a>.
+It includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One-way TLS</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that this is simply a technical term for what we have just done, setting up an HTTPS server.
+Thorntail supports several ways of setting up one-way TLS, so there are multiple examples.
+They are all functionally equivalent.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Two-way TLS, also known as mutual TLS, also known as client certificate authentication</p>
+</li>
+<li>
+<p>Two-way TLS with authorization</p>
+</li>
+<li>
+<p>Using WildFly legacy security framework</p>
+</li>
+<li>
+<p>Using Elytron, modern replacement of the legacy security framework</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="distributed-tracing_thorntail"><a class="anchor" href="#distributed-tracing_thorntail"></a>3.11. Distributed tracing</h3>
 <div class="paragraph">
 <p>Thorntail provides ways of simplifying the debugging of your application in a distributed environment.</p>
 </div>
 <div class="sect3">
-<h4 id="what-is-distributed-tracing_thorntail"><a class="anchor" href="#what-is-distributed-tracing_thorntail"></a>3.10.1. What is distributed tracing</h4>
+<h4 id="what-is-distributed-tracing_thorntail"><a class="anchor" href="#what-is-distributed-tracing_thorntail"></a>3.11.1. What is distributed tracing</h4>
 <div class="paragraph">
 <p>In the microservices architecture, where multiple services serve a single user request, debugging might be hard.
 One technique that makes debugging easier is called <em>distributed tracing</em>.
@@ -2466,7 +2577,7 @@ Outside of the application, a tracer typically runs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tracing-a-single-service_thorntail"><a class="anchor" href="#tracing-a-single-service_thorntail"></a>3.10.2. Tracing a single service</h4>
+<h4 id="tracing-a-single-service_thorntail"><a class="anchor" href="#tracing-a-single-service_thorntail"></a>3.11.2. Tracing a single service</h4>
 <div class="paragraph">
 <p>In this example, you can see how to trace a stand-alone "hello world" service.
 This service does not make any external invocations, so the results are not particularly interesting, but it is useful for building more complex examples.</p>
@@ -2632,7 +2743,7 @@ You can see all the requests you performed and basic information about them.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tracing-a-complex-service_thorntail"><a class="anchor" href="#tracing-a-complex-service_thorntail"></a>3.10.3. Tracing a complex service</h4>
+<h4 id="tracing-a-complex-service_thorntail"><a class="anchor" href="#tracing-a-complex-service_thorntail"></a>3.11.3. Tracing a complex service</h4>
 <div class="paragraph">
 <p>In this example, you can see how to trace a more complex service that performs an external service invocation.
 To keep the example easy to use, the application actually calls itself, but in a way that is equivalent to calling services outside of the application.</p>
@@ -2801,12 +2912,12 @@ You can see all the requests you performed and basic information about them.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="application-metrics_thorntail"><a class="anchor" href="#application-metrics_thorntail"></a>3.11. Application metrics</h3>
+<h3 id="application-metrics_thorntail"><a class="anchor" href="#application-metrics_thorntail"></a>3.12. Application metrics</h3>
 <div class="paragraph">
 <p>Thorntail provides ways of exposing application metrics in order to track performance and service availability.</p>
 </div>
 <div class="sect3">
-<h4 id="what-are-metrics_thorntail"><a class="anchor" href="#what-are-metrics_thorntail"></a>3.11.1. What are metrics</h4>
+<h4 id="what-are-metrics_thorntail"><a class="anchor" href="#what-are-metrics_thorntail"></a>3.12.1. What are metrics</h4>
 <div class="paragraph">
 <p>In the microservices architecture, where multiple services are invoked in order to serve a single user request, diagnosing performance issues or reacting to service outages might be hard.
 To make solving problems easier, applications must expose machine-readable data about their behavior, such as:</p>
@@ -2851,7 +2962,7 @@ For more information, see the <a href="https://grafana.com/" target="_blank" rel
 </div>
 </div>
 <div class="sect3">
-<h4 id="exposing-application-metrics_thorntail"><a class="anchor" href="#exposing-application-metrics_thorntail"></a>3.11.2. Exposing application metrics</h4>
+<h4 id="exposing-application-metrics_thorntail"><a class="anchor" href="#exposing-application-metrics_thorntail"></a>3.12.2. Exposing application metrics</h4>
 <div class="paragraph">
 <p>In this example, you:</p>
 </div>
@@ -3645,33 +3756,42 @@ Otherwise, they are resolved from local Maven repository or from the network at 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In case you set <code>bundleDependencies</code> to <code>false</code>, here&#8217;s how the local Maven repository is found at runtime:</p>
+<p>In case you set <code>bundleDependencies</code> to <code>false</code>, a local Maven repository is used at runtime.
+The location of the Maven repository is retrieved either from a <code>settings.xml</code> file, or from a system property.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If a <code>settings.xml</code> file is found and it defines a local repository, then it is used.
-When looking for the <code>settings.xml</code> file, the following locations are considered:</p>
+<p>If a <code>settings.xml</code> file is found and it defines a local repository, then this repository is used.
+The following locations are searched for the <code>settings.xml</code> file.
+The first occurrence of the file is used to retrieve the location of the Maven repository:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>If the <code>jboss.modules.settings.xml.url</code> system property is defined, then it is used.
-Its value needs to be a <code>file://...</code> URL of the <code>settings.xml</code> file.</p>
+<p>If the <code>jboss.modules.settings.xml.url</code> system property is defined, then the <code>settings.xml</code> file defined in this property is used.
+The value must be a <code>file://...</code> URL .</p>
 </li>
 <li>
-<p>Otherwise, if <code>~/.m2/settings.xml</code> file exists, then it is used.</p>
+<p>If the <code>~/.m2/settings.xml</code> file exists, then it is used.</p>
 </li>
 <li>
-<p>Otherwise, if <code>$M2_HOME/conf/settings.xml</code> file exists, then it is used.</p>
+<p>If the <code>$M2_HOME/conf/settings.xml</code> file exists, then it is used.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Otherwise, if the <code>maven.repo.local</code> system property is defined, then it is used.</p>
+<p>If the path to the Maven repository is not defined in a <code>settings.xml</code> file, then:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If the <code>maven.repo.local</code> system property is defined, then this repository is used.</p>
 </li>
 <li>
-<p>Otherwise, the standard location <code>~/.m2/repository</code> is used.</p>
+<p>Otherwise the standard location <code>~/.m2/repository</code> is used.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -4623,7 +4743,7 @@ Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_
 <div class="sect4">
 <h5 id="specifying-external-jdbc-drivers_thorntail"><a class="anchor" href="#specifying-external-jdbc-drivers_thorntail"></a>Specifying external JDBC drivers</h5>
 <div class="paragraph">
-<p>When executing an application (either as a hollow JAR or as an uberjar), you can specify a JDBC driver JAR using the <code>thorntail.classpath</code> system property.
+<p>When executing an application, either as an uber JAR or using a hollow JAR, you can specify a JDBC driver JAR using the <code>thorntail.classpath</code> system property.
 This way, you do not need to package the driver in the application.</p>
 </div>
 <div class="paragraph">
@@ -8658,8 +8778,11 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 <div class="sect2">
 <h3 id="_hibernate"><a class="anchor" href="#_hibernate"></a>6.19. Hibernate</h3>
 <div class="paragraph">
-<p>Provides support and integration for applications using Hibernate ORM.
-This is useful when the standard JPA is not enough and Hibernate specific features are required.</p>
+<p>This fraction provides the same functionality as the <code>jpa</code> fraction.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the <code>hibernate</code> fraction provides dependencies on the correct versions of Hibernate artifacts.
+If you use Hibernate APIs in your applications, you can use this fraction to manage the Hibernate versions instead of managing them manually.</p>
 </div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
@@ -24682,7 +24805,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.7.1.Final-SNAPSHOT<br>
-Last updated 2020-07-17 06:38:31 MST
+Last updated 2020-08-13 04:00:28 MST
 </div>
 </div>
 </body>
